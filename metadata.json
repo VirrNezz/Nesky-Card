@@ -1,0 +1,6 @@
+{
+  "name": "Programmer ID Card",
+  "description": "Interactive dual-theme Programmer ID Card featuring Nezz AI and Sun3ss personas with a draggable PNGTuber AI assistant, 3D flip transitions, and interactive chat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
