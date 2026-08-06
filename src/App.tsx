@@ -28,20 +28,45 @@ export default function App() {
   const currentProfile = PROFILES[activeProfileId];
   const isNezz = activeProfileId === 'nezz';
 
+  // ==========================================
+  // FITUR YAPPING OTOMATIS (BANYAK OMONG BERKALA)
+  // ==========================================
+  useEffect(() => {
+    // Daftar bahan yapping/celetukan acak berdasarkan persona aktif
+    const nezzYappingList = [
+      "Lagi ngecek struktur React 19 sama Tailwind nih... Biar makin smooth!",
+      "Eh, jangan lupa commit kodenya ya, nanti keburu hilang lho :v",
+      "Sistem aman, enkripsi lancar. Ada yang bisa dibantu, bos?",
+      "Lagi mikirin arsitektur UI futuristic buat project selanjutnya...",
+    ];
+
+    const sun3ssYappingList = [
+      "Ngoprek low-level emang paling seru, sunyi tapi mematikan...",
+      "Assembly & C kernel hooks jalan terus tanpa halangan.",
+      "Mode stealth aktif. Jangan berisik, lagi analisis jaringan.",
+      "Kopi mana kopi? Coding tanpa kopi itu bagaikan skunk tanpa bau khasnya :v",
+    ];
+
+    // Set interval yapping otomatis setiap 25 detik sekali jika user sedang diam
+    const yappingInterval = setInterval(() => {
+      const activeList = isNezz ? nezzYappingList : sun3ssYappingList;
+      const randomYap = activeList[Math.floor(Math.random() * activeList.length)];
+      setSpeechText(randomYap);
+    }, 25000);
+
+    return () => clearInterval(yappingInterval);
+  }, [isNezz]);
+
   // Handle Card Flip and Simultaneous Transition Effects
   const handleSwapProfile = () => {
     const nextProfileId: ProfileId = activeProfileId === 'nezz' ? 'sun3ss' : 'nezz';
 
-    // REQUIREMENT: Seamless 3D flip transition between two developer personas.
-    // Immediate flip of card, while triggering parallel visual effect on PNGTuber:
     if (nextProfileId === 'sun3ss') {
-      // Swapping to Sun3ss: Glitch Effect ~800ms
       setTransitionEffect('glitch');
       setActiveProfileId('sun3ss');
       setSpeechText("SYSTEM OVERRIDE! Sun3ss stealth skunk monochrome persona active.");
       setTimeout(() => setTransitionEffect('none'), 800);
     } else {
-      // Swapping to Nezz AI: Sniper Shot Effect ~1000ms
       setTransitionEffect('sniper');
       setActiveProfileId('nezz');
       setSpeechText("NEURAL RE-ALIGNMENT! Nezz AI Cyber Navy protocol online.");
@@ -198,7 +223,7 @@ export default function App() {
         />
       </main>
 
-      {/* Draggable Floating PNGTuber Assistant Widget */}
+      {/* Draggable Floating PNGTuber Assistant Widget (Yapping Active) */}
       <PNGTuberWidget
         speechText={speechText}
         activeProfileId={activeProfileId}
@@ -214,7 +239,7 @@ export default function App() {
       <footer className="relative z-20 w-full max-w-6xl mx-auto px-4 py-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono-code text-slate-400 gap-2">
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>STATUS: ALL_SYSTEMS_OPERATIONAL</span>
+          <span>STATUS: ALL_SYSTEMS_OPERATIONAL (YAPPING_ENABLED)</span>
         </div>
 
         <div className="flex items-center space-x-4">
@@ -250,24 +275,14 @@ export default function App() {
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                 <p className="font-semibold text-white mb-1">1. 3D Dual Persona Flip</p>
                 <p>
-                  Click <strong>SWAP PERSONA</strong> to flip between <strong>Nezz AI</strong> (Cyber Navy `#0d1117`) and <strong>Sun3ss</strong> (Monochrome Skunk `#050505`).
+                  Click <strong>SWAP PERSONA</strong> to flip between <strong>Nezz AI</strong> and <strong>Sun3ss</strong>.
                 </p>
               </div>
 
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <p className="font-semibold text-white mb-1">2. Draggable PNGTuber Assistant</p>
+                <p className="font-semibold text-white mb-1">2. Draggable Yapping PNGTuber</p>
                 <p>
-                  Drag the avatar floating widget anywhere on screen (mouse & touch supported).
-                  Watch it switch between <strong>talking PNG</strong> (`1759068250319.png`) and <strong>silent PNG</strong> (`1759068181114.png`) in sync with typewriter text!
-                </p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <p className="font-semibold text-white mb-1">3. Parallel Visual Effects</p>
-                <p>
-                  - Swapping to Sun3ss: <strong>Glitch Effect</strong> (~800ms)
-                  <br />
-                  - Swapping to Nezz AI: <strong>Sniper Shot Effect</strong> with red flash & crosshair (~1000ms)
+                  Avatar akan otomatis "yapping" (banyak omong sendiri) secara berkala atau merespons ketika kamu mengetik prompt/mengklik tombol interaktif di kartu!
                 </p>
               </div>
             </div>
