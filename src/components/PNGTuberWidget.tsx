@@ -249,8 +249,8 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
   const isNezz = activeProfileId === 'nezz';
   const isRightSide = position.x > (typeof window !== 'undefined' ? window.innerWidth / 2 : 200);
 
-  const idleImgSrc = isNezz ? '/idle.png' : '/sun3ss-idle.jpg';
-  const speakImgSrc = isNezz ? '/speak.png' : '/sun3ss-speak.jpg';
+  const idleImgSrc = isNezz ? '/idle.png' : '/sun3ss-idle.png';
+  const speakImgSrc = isNezz ? '/speak.png' : '/sun3ss-speak.png';
 
   return (
     <div
