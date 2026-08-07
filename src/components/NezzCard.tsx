@@ -87,7 +87,7 @@ export const NezzCard: React.FC<NezzCardProps> = ({
     navigator.clipboard.writeText(`ID: ${profile.id.toUpperCase()}-2026-TACTICAL`);
     setCopied(true);
     if (onTriggerAssistantSpeak) {
-      onTriggerAssistantSpeak(`Copied ${profile.name}'s Tactical ID!`);
+      onTriggerAssistantSpeak(`Copied alonyksy profile ID!`);
     }
     setTimeout(() => setCopied(false), 2000);
   };
@@ -126,7 +126,7 @@ export const NezzCard: React.FC<NezzCardProps> = ({
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
           </div>
           <span className="ml-2 font-mono-code text-[10px] tracking-wider uppercase text-purple-300 font-bold">
-            NEZZ_OPS // SNIPER_HUD
+            ALONYKSY // PROFILE_HUD
           </span>
         </div>
 
@@ -162,7 +162,7 @@ export const NezzCard: React.FC<NezzCardProps> = ({
               {!imgError ? (
                 <img
                   src={profile.avatarUrl || '/nezz-avatar.png'}
-                  alt={`${profile.name} Avatar`}
+                  alt="alonyksy profile Avatar"
                   onError={() => setImgError(true)}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover rounded-full transform group-hover:scale-105 transition-transform duration-500"
@@ -185,7 +185,7 @@ export const NezzCard: React.FC<NezzCardProps> = ({
               className="text-2xl sm:text-3xl font-bold tracking-tight bg-gradient-to-r from-purple-200 via-fuchsia-200 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(168,85,247,0.3)]"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              {profile.name}
+              alonyksy profile
             </h1>
             <BadgeCheck size={18} className="text-purple-400" />
           </div>
