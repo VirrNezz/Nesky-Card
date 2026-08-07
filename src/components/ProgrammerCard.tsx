@@ -1,7 +1,7 @@
 import React from 'react';
 import { RefreshCw } from 'lucide-react';
 import { ProfileData, ProfileId } from '../types';
-import { NezzCard } from './NezzCard';
+import { AlonyskyCard } from './AlonyskyCard';
 import { Sun3ssCard } from './Sun3ssCard';
 
 interface ProgrammerCardProps {
@@ -42,13 +42,13 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
             />
           </div>
 
-          {/* BACK CARD - NEZZ */}
+          {/* BACK CARD - ALONYSKY */}
           <div
             className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 ${
               activeProfileId === 'nezz' ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'
             }`}
           >
-            <NezzCard
+            <AlonyskyCard
               onTriggerAssistantSpeak={onTriggerAssistantSpeak}
               soundEnabled={soundEnabled}
               onToggleSound={onToggleSound}
