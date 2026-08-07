@@ -1,16 +1,16 @@
 import { ProfileData } from '../types';
 
-export const NEZZ_PROFILE: ProfileData = {
-  id: 'nezz',
-  name: 'Nezz AI',
-  handle: '@nezz_ops',
+export const ALONYSKY_PROFILE: ProfileData = {
+  id: 'alonysky',
+  name: 'Alonysky',
+  handle: '@alonysky',
   title: 'Elite Cyber Sniper • Military Tech Operative',
   role: 'Military Tech Operative',
   location: 'Tactical Grid // Sector 07',
   statusText: 'SNIPER_HUD_ONLINE // LOCK_ON',
   statusType: 'online',
   bio: 'Mengoperasikan taktik digital tingkat lanjut dengan presisi penembak jitu militer siber. Fokus pada ketepatan arsitektur, pertahanan taktis, dan infrastruktur sistem tanpa cela.',
-  avatarUrl: '/nezz-avatar.png',
+  avatarUrl: '/alonysky-avatar.png',
   bgStyle: "url('/backgrounds/cyber-bg.jpg')",
   themeColor: {
     primary: 'purple-400',
@@ -42,9 +42,9 @@ export const NEZZ_PROFILE: ProfileData = {
   links: [
     {
       id: 'github',
-      title: 'github.com/nezz-ai',
+      title: 'github.com/alonysky',
       subtitle: 'Tactical Repositories',
-      url: 'https://github.com/nezz-ai',
+      url: 'https://github.com/alonysky',
       icon: 'Github',
       gitDiffType: 'add',
       badge: 'TACTICAL',
@@ -52,9 +52,9 @@ export const NEZZ_PROFILE: ProfileData = {
     },
     {
       id: 'linkedin',
-      title: 'linkedin.com/in/nezz-ops',
+      title: 'linkedin.com/in/alonysky',
       subtitle: 'Military Career / Operations',
-      url: 'https://linkedin.com/in/nezz-ops',
+      url: 'https://linkedin.com/in/alonysky',
       icon: 'Linkedin',
       gitDiffType: 'add',
       badge: 'OPS',
@@ -72,9 +72,9 @@ export const NEZZ_PROFILE: ProfileData = {
     },
     {
       id: 'telegram',
-      title: 't.me/nezz_encrypted_ops',
+      title: 't.me/alonysky_encrypted_ops',
       subtitle: 'Encrypted Comms Channel',
-      url: 'https://t.me/nezz_encrypted_ops',
+      url: 'https://t.me/alonysky_encrypted_ops',
       icon: 'Mail',
       gitDiffType: 'add',
       badge: 'ENCRYPTED',
@@ -82,7 +82,7 @@ export const NEZZ_PROFILE: ProfileData = {
     },
   ],
   quotes: [
-    "Target locked. Nezz AI tactical sniper systems primed.",
+    "Target locked. Alonysky tactical sniper systems primed.",
     "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
     "Direct neural telemetry operating with zero latency.",
     "Systems optimized for maximum stealth and computational power.",
@@ -175,8 +175,7 @@ export const SUN3SS_PROFILE: ProfileData = {
 };
 
 // Deeply decoupled export map
-export const PROFILES: Record<'nezz' | 'sun3ss', ProfileData> = {
-  nezz: Object.freeze({ ...NEZZ_PROFILE }),
+export const PROFILES: Record<'alonysky' | 'sun3ss', ProfileData> = {
+  alonysky: Object.freeze({ ...ALONYSKY_PROFILE }),
   sun3ss: Object.freeze({ ...SUN3SS_PROFILE }),
 };
-
