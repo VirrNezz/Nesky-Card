@@ -10,7 +10,7 @@ export const ALONYSKY_PROFILE: ProfileData = {
   statusText: 'SNIPER_HUD_ONLINE // LOCK_ON',
   statusType: 'online',
   bio: 'Mengoperasikan taktik digital tingkat lanjut dengan presisi penembak jitu militer siber. Fokus pada ketepatan arsitektur, pertahanan taktis, dan infrastruktur sistem tanpa cela.',
-  avatarUrl: '/alonysky-avatar.png',
+  avatarUrl: '/pfp-alony(1).jpeg',
   bgStyle: "url('/backgrounds/cyber-bg.jpg')",
   themeColor: {
     primary: 'purple-400',
