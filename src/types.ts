@@ -1,4 +1,4 @@
-export type ProfileId = 'nezz' | 'sun3ss';
+export type ProfileId = 'AlonySky' | 'Sun3ss';
 
 export interface TechBadge {
   name: string;
@@ -26,7 +26,7 @@ export interface ProfileData {
   role: string;
   location: string;
   statusText: string;
-  statusType: 'online' | 'busy' | 'stealth' | 'coding';
+  statusType: 'online' | 'sleeping' | 'on mission' | 'coding';
   bio: string;
   avatarUrl: string;
   bgStyle: string;
