@@ -26,7 +26,7 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
       <div className="relative z-10 w-full max-w-[90%] sm:max-w-md md:max-w-lg h-[80vh] min-h-[520px] max-h-[720px] perspective-1000 mb-6">
         <div
           className={`absolute inset-0 w-full h-full text-left transition-transform duration-700 transform-style-preserve-3d ${
-            activeProfileId === 'nezz' ? 'rotate-y-180' : ''
+            activeProfileId === 'alonysky' ? 'rotate-y-180' : ''
           }`}
         >
           {/* FRONT CARD - SUN3SS */}
@@ -45,7 +45,7 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
           {/* BACK CARD - ALONYSKY */}
           <div
             className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 ${
-              activeProfileId === 'nezz' ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'
+              activeProfileId === 'alonysky' ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'
             }`}
           >
             <AlonyskyCard
@@ -81,7 +81,7 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
               SWITCH PERSONA
             </span>
             <span className="font-mono-code font-bold text-xs tracking-wider">
-              SWAP TO {activeProfileId === 'nezz' ? 'SUN3SS' : 'NEZZ'}
+              SWAP TO {activeProfileId === 'alonysky' ? 'SUN3SS' : 'ALONYSKY'}
             </span>
           </div>
         </button>
