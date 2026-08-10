@@ -100,7 +100,7 @@ export const SUN3SS_PROFILE: ProfileData = {
   statusType: 'stealth',
   bio: 'Operating in deep monochrome. Minimalist architectures, kernel level debugging, zero-dependency philosophy, and brutalist interfaces.',
   avatarUrl: '/sun3ss-avatar.png',
-  bgStyle: '#000000',
+  bgStyle: "url ('/backgrounds/sun3ss-bg.jpg'),
   themeColor: {
     primary: 'zinc-100',
     secondary: 'zinc-400',
