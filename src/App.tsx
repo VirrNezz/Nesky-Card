@@ -33,10 +33,11 @@ export default function App() {
   // ==========================================
   useEffect(() => {
     const alonyskyYappingList = [
+      "Target locked. Alonysky tactical sniper systems primed.",
+      "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
+      "Direct neural telemetry operating with zero latency.",
+      "Systems optimized for maximum stealth and computational power.",
       "Lagi ngecek struktur React 19 sama Tailwind nih... Biar makin smooth!",
-      "Eh, jangan lupa commit kodenya ya, nanti keburu hilang lho :v",
-      "Sistem aman, enkripsi lancar. Ada yang bisa dibantu, bos?",
-      "Lagi mikirin arsitektur UI futuristic buat project selanjutnya...",
     ];
 
     const sun3ssYappingList = [
@@ -111,15 +112,16 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen w-full flex flex-col justify-between transition-colors duration-700 font-space relative overflow-hidden select-none ${
+      key={activeProfileId}
+      className={`min-h-screen w-full flex flex-col justify-between transition-all duration-1000 font-space relative overflow-y-auto select-none animate-fade-in ${
         isAlonysky ? 'text-slate-300' : 'text-zinc-300'
       }`}
       style={{
-        backgroundImage: currentProfile.bgStyle.startsWith('url') ? currentProfile.bgStyle : undefined,
-        backgroundColor: !currentProfile.bgStyle.startsWith('url') ? currentProfile.bgStyle : '#020408',
+        backgroundImage: currentProfile.bgStyle && currentProfile.bgStyle.startsWith('url') ? currentProfile.bgStyle : undefined,
+        backgroundColor: !currentProfile.bgStyle || !currentProfile.bgStyle.startsWith('url') ? (currentProfile.bgStyle || '#020408') : undefined,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       {/* Immersive Background Grids & Ambient Glows */}
@@ -215,7 +217,7 @@ export default function App() {
       </header>
 
       {/* Main Content Stage */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center p-3 sm:p-6 w-full max-w-5xl mx-auto">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center p-3 sm:p-6 w-full max-w-5xl mx-auto my-auto">
         <ProgrammerCard
           currentProfile={currentProfile}
           activeProfileId={activeProfileId}
