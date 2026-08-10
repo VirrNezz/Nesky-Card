@@ -26,14 +26,13 @@ export default function App() {
   const [showHelpModal, setShowHelpModal] = useState(false);
 
   const currentProfile = PROFILES[activeProfileId];
-  const isNezz = activeProfileId === 'nezz';
+  const isAlonysky = activeProfileId === 'alonysky';
 
   // ==========================================
   // FITUR YAPPING OTOMATIS (BANYAK OMONG BERKALA)
   // ==========================================
   useEffect(() => {
-    // Daftar bahan yapping/celetukan acak berdasarkan persona aktif
-    const nezzYappingList = [
+    const alonyskyYappingList = [
       "Lagi ngecek struktur React 19 sama Tailwind nih... Biar makin smooth!",
       "Eh, jangan lupa commit kodenya ya, nanti keburu hilang lho :v",
       "Sistem aman, enkripsi lancar. Ada yang bisa dibantu, bos?",
@@ -47,19 +46,18 @@ export default function App() {
       "Kopi mana kopi? Coding tanpa kopi itu bagaikan skunk tanpa bau khasnya :v",
     ];
 
-    // Set interval yapping otomatis setiap 25 detik sekali jika user sedang diam
     const yappingInterval = setInterval(() => {
-      const activeList = isNezz ? nezzYappingList : sun3ssYappingList;
+      const activeList = isAlonysky ? alonyskyYappingList : sun3ssYappingList;
       const randomYap = activeList[Math.floor(Math.random() * activeList.length)];
       setSpeechText(randomYap);
     }, 25000);
 
     return () => clearInterval(yappingInterval);
-  }, [isNezz]);
+  }, [isAlonysky]);
 
   // Handle Card Flip and Simultaneous Transition Effects
   const handleSwapProfile = () => {
-    const nextProfileId: ProfileId = activeProfileId === 'nezz' ? 'sun3ss' : 'nezz';
+    const nextProfileId: ProfileId = activeProfileId === 'alonysky' ? 'sun3ss' : 'alonysky';
 
     if (nextProfileId === 'sun3ss') {
       setTransitionEffect('glitch');
@@ -68,8 +66,8 @@ export default function App() {
       setTimeout(() => setTransitionEffect('none'), 800);
     } else {
       setTransitionEffect('sniper');
-      setActiveProfileId('nezz');
-      setSpeechText("NEURAL RE-ALIGNMENT! Nezz AI Cyber Navy protocol online.");
+      setActiveProfileId('alonysky');
+      setSpeechText("NEURAL RE-ALIGNMENT! Alonysky tactical protocol online.");
       setTimeout(() => setTransitionEffect('none'), 1000);
     }
   };
@@ -86,8 +84,8 @@ export default function App() {
         "How many programmers does it take to change a lightbulb? None, that's a hardware problem!",
       ];
       setSpeechText(jokes[Math.floor(Math.random() * jokes.length)]);
-    } else if (lower.includes('nezz')) {
-      setSpeechText("Nezz AI is the Cyber Navy AI Architect. Focused on React 19, Gemini agents, and futuristic UI!");
+    } else if (lower.includes('alonysky')) {
+      setSpeechText("Alonysky is the Cyber Tech Operative. Focused on React 19, UI design, and futuristic telemetry!");
     } else if (lower.includes('sun3ss') || lower.includes('skunk')) {
       setSpeechText("Sun3ss operates in raw monochrome. Low-level assembly, C, kernel hooks, and stealth hacking!");
     } else if (lower.includes('flip') || lower.includes('3d') || lower.includes('perspective')) {
@@ -114,8 +112,15 @@ export default function App() {
   return (
     <div
       className={`min-h-screen w-full flex flex-col justify-between transition-colors duration-700 font-space relative overflow-hidden select-none ${
-        isNezz ? 'bg-[#03060b] text-slate-300' : 'bg-[#020408] text-zinc-300'
+        isAlonysky ? 'text-slate-300' : 'text-zinc-300'
       }`}
+      style={{
+        backgroundImage: currentProfile.bgStyle.startsWith('url') ? currentProfile.bgStyle : undefined,
+        backgroundColor: !currentProfile.bgStyle.startsWith('url') ? currentProfile.bgStyle : '#020408',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
     >
       {/* Immersive Background Grids & Ambient Glows */}
       <div
@@ -127,7 +132,7 @@ export default function App() {
       />
       <div
         className={`absolute top-0 left-0 w-full h-full pointer-events-none transition-all duration-700 ${
-          isNezz
+          isAlonysky
             ? 'bg-gradient-to-br from-cyan-900/10 via-transparent to-emerald-900/10'
             : 'bg-gradient-to-br from-zinc-800/10 via-transparent to-zinc-950/20'
         }`}
@@ -135,7 +140,7 @@ export default function App() {
       {/* Central Ambient Glow Orb */}
       <div
         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[120px] pointer-events-none transition-colors duration-700 ${
-          isNezz ? 'bg-cyan-500/5' : 'bg-zinc-400/5'
+          isAlonysky ? 'bg-cyan-500/5' : 'bg-zinc-400/5'
         }`}
       />
 
@@ -154,12 +159,12 @@ export default function App() {
         <div className="flex items-center space-x-3">
           <div
             className={`w-8 h-8 rounded-lg flex items-center justify-center font-mono-code font-bold text-sm shadow-md transition-all ${
-              isNezz
+              isAlonysky
                 ? 'bg-cyan-950/80 border border-cyan-400/50 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)]'
                 : 'bg-zinc-900 border border-zinc-600 text-zinc-100'
             }`}
           >
-            {isNezz ? <Zap size={16} /> : <Code2 size={16} />}
+            {isAlonysky ? <Zap size={16} /> : <Code2 size={16} />}
           </div>
 
           <div>
@@ -169,7 +174,7 @@ export default function App() {
               </span>
               <span
                 className={`text-[10px] font-mono-code font-semibold px-2 py-0.5 rounded border uppercase tracking-wider ${
-                  isNezz
+                  isAlonysky
                     ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-300'
                     : 'bg-zinc-800 border-zinc-600 text-zinc-200'
                 }`}
@@ -177,7 +182,6 @@ export default function App() {
                 SYSTEM_ID: {activeProfileId.toUpperCase()}_v2.0
               </span>
             </div>
-            {/* System Status Telemetry */}
             <div className="flex items-center gap-3 text-[10px] font-mono-code text-slate-400 mt-0.5">
               <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -191,7 +195,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Global Controls */}
         <div className="flex items-center space-x-2 mt-2 sm:mt-0">
           <button
             onClick={() => setSoundEnabled((prev) => !prev)}
@@ -211,7 +214,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Content Stage: Centered Digital ID Card */}
+      {/* Main Content Stage */}
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center p-3 sm:p-6 w-full max-w-5xl mx-auto">
         <ProgrammerCard
           currentProfile={currentProfile}
@@ -223,7 +226,7 @@ export default function App() {
         />
       </main>
 
-      {/* Draggable Floating PNGTuber Assistant Widget (Yapping Active) */}
+      {/* PNGTuber Widget */}
       <PNGTuberWidget
         speechText={speechText}
         activeProfileId={activeProfileId}
@@ -254,7 +257,7 @@ export default function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
           <div
             className={`w-full max-w-md p-6 rounded-2xl border shadow-2xl relative ${
-              isNezz
+              isAlonysky
                 ? 'bg-[#0d1117] border-cyan-500/50 text-cyan-100'
                 : 'bg-zinc-950 border-zinc-700 text-zinc-100'
             }`}
@@ -267,7 +270,7 @@ export default function App() {
             </button>
 
             <div className="flex items-center space-x-2 mb-4">
-              <Terminal size={20} className={isNezz ? 'text-cyan-400' : 'text-zinc-200'} />
+              <Terminal size={20} className={isAlonysky ? 'text-cyan-400' : 'text-zinc-200'} />
               <h3 className="font-space text-lg font-bold">Programmer ID Card Guide</h3>
             </div>
 
@@ -275,7 +278,7 @@ export default function App() {
               <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                 <p className="font-semibold text-white mb-1">1. 3D Dual Persona Flip</p>
                 <p>
-                  Click <strong>SWAP PERSONA</strong> to flip between <strong>Nezz AI</strong> and <strong>Sun3ss</strong>.
+                  Click <strong>SWAP PERSONA</strong> to flip between <strong>Alonysky</strong> and <strong>Sun3ss</strong>.
                 </p>
               </div>
 
@@ -290,7 +293,7 @@ export default function App() {
             <button
               onClick={() => setShowHelpModal(false)}
               className={`mt-5 w-full py-2.5 rounded-xl font-space font-bold text-xs transition-all ${
-                isNezz
+                isAlonysky
                   ? 'bg-cyan-500 hover:bg-cyan-400 text-black'
                   : 'bg-zinc-100 hover:bg-white text-black'
               }`}
