@@ -57,11 +57,22 @@ export const Sun3ssCard: React.FC<Sun3ssCardProps> = ({
   };
 
   return (
-    <div className="relative w-full h-full rounded-[24px] overflow-hidden flex flex-col justify-between text-slate-200 select-none transition-all duration-500 border border-zinc-800 bg-[#050505] shadow-[0_0_50px_rgba(255,255,255,0.08)]">
+    <div 
+      className="relative w-full h-full rounded-[24px] overflow-hidden flex flex-col justify-between text-slate-200 select-none transition-all duration-500 border border-zinc-800 shadow-[0_0_50px_rgba(255,255,255,0.08)]"
+      style={{
+        backgroundImage: profile.bgStyle && profile.bgStyle.startsWith('url') ? profile.bgStyle : undefined,
+        backgroundColor: !profile.bgStyle || !profile.bgStyle.startsWith('url') ? (profile.bgStyle || '#050505') : undefined,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      {/* Background Overlay supaya teks tetap terbaca jelas di atas gambar */}
+      <div className="absolute inset-0 bg-[#050505]/85 backdrop-blur-[2px] pointer-events-none rounded-[24px]" />
+
       {/* Background Ambient Lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[180px] bg-zinc-100/5 blur-[90px] pointer-events-none rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[350px] h-[180px] bg-zinc-100/5 blur-[90px] pointer-events-none rounded-full z-10" />
       <div
-        className="absolute inset-0 pointer-events-none opacity-15 rounded-[24px]"
+        className="absolute inset-0 pointer-events-none opacity-15 rounded-[24px] z-10"
         style={{
           backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)`,
           backgroundSize: '20px 20px',
@@ -69,7 +80,7 @@ export const Sun3ssCard: React.FC<Sun3ssCardProps> = ({
       />
 
       {/* Header Bar */}
-      <div className="relative z-10 flex items-center justify-between px-5 py-3 border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
+      <div className="relative z-20 flex items-center justify-between px-5 py-3 border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
         <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
@@ -99,7 +110,7 @@ export const Sun3ssCard: React.FC<Sun3ssCardProps> = ({
       </div>
 
       {/* Main Content Body */}
-      <div className="p-5 flex flex-col items-center flex-1 min-h-0 relative z-10 overflow-y-auto custom-scrollbar pointer-events-auto">
+      <div className="p-5 flex flex-col items-center flex-1 min-h-0 relative z-20 overflow-y-auto custom-scrollbar pointer-events-auto">
         {/* Avatar Area */}
         <div className="relative mb-3 group shrink-0">
           <div className="relative rounded-full p-1.5 transition-all duration-500 border border-zinc-700 shadow-[0_0_20px_rgba(255,255,255,0.1)] group-hover:border-zinc-500">
@@ -183,7 +194,7 @@ export const Sun3ssCard: React.FC<Sun3ssCardProps> = ({
       </div>
 
       {/* Footer bar with Copy ID */}
-      <div className="px-5 py-3 border-t border-zinc-900 bg-zinc-950/80 backdrop-blur-md flex items-center justify-between relative z-10 shrink-0">
+      <div className="px-5 py-3 border-t border-zinc-900 bg-zinc-950/80 backdrop-blur-md flex items-center justify-between relative z-20 shrink-0">
         <button
           onClick={handleCopyId}
           className="flex items-center space-x-2 px-2.5 py-1 rounded-lg border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-800 hover:border-zinc-700 text-[11px] font-mono-code transition-all text-zinc-300 hover:text-zinc-100 active:scale-95"
