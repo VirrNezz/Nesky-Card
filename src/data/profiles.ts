@@ -11,7 +11,7 @@ export const ALONYSKY_PROFILE: ProfileData = {
   statusType: 'online',
   bio: 'Mengoperasikan taktik digital tingkat lanjut dengan presisi penembak jitu militer siber. Fokus pada ketepatan arsitektur, pertahanan taktis, dan infrastruktur sistem tanpa cela.',
   avatarUrl: '/pfp-alony(1).jpeg',
-  bgStyle: "url('/backgrounds/cyber-bg.jpg')",
+  bgStyle: "url('/backgrounds/sun3ss-bg.jpg')",
   themeColor: {
     primary: 'purple-400',
     secondary: 'cyan-400',
