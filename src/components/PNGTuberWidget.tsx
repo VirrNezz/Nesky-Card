@@ -243,8 +243,8 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
   const isAlonysky = activeProfileId === 'alonysky';
   const isRightSide = position.x > (typeof window !== 'undefined' ? window.innerWidth / 2 : 200);
 
-  const idleImgSrc = isAlonysky ? '/idle.png' : '/sun3ss-idle.png';
-  const speakImgSrc = isAlonysky ? '/speak.png' : '/sun3ss-speak.png';
+  const idleImgSrc = isAlonysky ? '/alony-idle.png' : '/sun3ss-idle.png';
+  const speakImgSrc = isAlonysky ? '/alony-speak.png' : '/sun3ss-speak.png';
 
   return (
     <div
