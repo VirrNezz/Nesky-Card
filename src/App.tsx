@@ -66,28 +66,38 @@ export default function App() {
     if (nextProfileId === 'sun3ss') {
       setTransitionEffect('glitch');
       setActiveProfileId('sun3ss');
-      setSpeechText("SYSTEM OVERRIDE! Sun3ss stealth skunk monochrome persona active.");
+      setSpeechText("Hallo aku sun3ss, kasih aku makan = kamu aman dari spray ku whehehe");
       setTimeout(() => setTransitionEffect('none'), 800);
     } else {
       setTransitionEffect('sniper');
       setActiveProfileId('alonysky');
-      setSpeechText("NEURAL RE-ALIGNMENT! Alonysky tactical protocol online.");
+      setSpeechText("MISSION COMPLETED!! Welcome back AlonySky... We have been waiting fo you");
       setTimeout(() => setTransitionEffect('none'), 1000);
     }
   };
 
-  // Assistant prompt/response handler
+  // Assistant prompt/response handler (Semua jokes diganti sepenuhnya ke Quotes/Motivasi per persona)
   const handleSendMessage = (msg: string) => {
     const lower = msg.toLowerCase();
 
-    if (lower.includes('joke')) {
-      const jokes = [
-        "Why do programmers prefer dark mode? Because light attracts bugs!",
-        "There are 10 types of people in the world: those who understand binary, and those who don't.",
-        "A SQL query walks into a bar, walks up to two tables and asks: 'Can I join you?'",
-        "How many programmers does it take to change a lightbulb? None, that's a hardware problem!",
+    if (lower.includes('joke') || lower.includes('quote') || lower.includes('motivasi')) {
+      const alonyskyQuotes = [
+        "Target locked. Alonysky tactical sniper systems primed.",
+        "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
+        "Direct neural telemetry operating with zero latency.",
+        "Systems optimized for maximum stealth and computational power.",
       ];
-      setSpeechText(jokes[Math.floor(Math.random() * jokes.length)]);
+
+      const sun3ssQuotes = [
+        "SYSTEM OVERRIDE DETECTED. Sun3ss monochrome skunk mode active.",
+        "Less abstraction, more raw performance. Binary is truth.",
+        "glitch protocol initiated! RGB splitting across memory boundaries.",
+        "Check the Git diff sidebars — every link holds a stealth signature.",
+      ];
+
+      const activeQuotes = isAlonysky ? alonyskyQuotes : sun3ssQuotes;
+      const randomQuote = activeQuotes[Math.floor(Math.random() * activeQuotes.length)];
+      setSpeechText(randomQuote);
     } else if (lower.includes('alonysky')) {
       setSpeechText("Alonysky is the Cyber Tech Operative. Focused on React 19, UI design, and futuristic telemetry!");
     } else if (lower.includes('sun3ss') || lower.includes('skunk')) {
