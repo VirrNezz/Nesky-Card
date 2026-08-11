@@ -451,7 +451,7 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
 
             <div className="mt-2.5 flex flex-wrap gap-1">
               {[
-                'Tell me a joke!',
+                'Beri aku quote!',
                 'Who is Alonysky?',
                 'Who is Sun3ss?',
               ].map((chip, idx) => (

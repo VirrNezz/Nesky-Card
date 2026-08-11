@@ -76,26 +76,28 @@ export default function App() {
     }
   };
 
-  // Assistant prompt/response handler (Semua jokes diganti sepenuhnya ke Quotes/Motivasi per persona)
+  // Assistant prompt/response handler (Kutipan/Quotes dipisah secara tegas per persona)
   const handleSendMessage = (msg: string) => {
     const lower = msg.toLowerCase();
 
-    if (lower.includes('joke') || lower.includes('quote') || lower.includes('motivasi')) {
-      const alonyskyQuotes = [
+    if (lower.includes('quote') || lower.includes('motivasi') || lower.includes('inspirasi')) {
+      // Daftar kutipan khusus Alonysky (terpisah dari yapping)
+      const alonyskyDedicatedQuotes = [
         "Target locked. Alonysky tactical sniper systems primed.",
         "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
         "Direct neural telemetry operating with zero latency.",
         "Systems optimized for maximum stealth and computational power.",
       ];
 
-      const sun3ssQuotes = [
+      // Daftar kutipan khusus Sun3ss (terpisah dari yapping)
+      const sun3ssDedicatedQuotes = [
         "SYSTEM OVERRIDE DETECTED. Sun3ss monochrome skunk mode active.",
         "Less abstraction, more raw performance. Binary is truth.",
         "glitch protocol initiated! RGB splitting across memory boundaries.",
         "Check the Git diff sidebars — every link holds a stealth signature.",
       ];
 
-      const activeQuotes = isAlonysky ? alonyskyQuotes : sun3ssQuotes;
+      const activeQuotes = isAlonysky ? alonyskyDedicatedQuotes : sun3ssDedicatedQuotes;
       const randomQuote = activeQuotes[Math.floor(Math.random() * activeQuotes.length)];
       setSpeechText(randomQuote);
     } else if (lower.includes('alonysky')) {
@@ -118,8 +120,19 @@ export default function App() {
     if (customText) {
       setSpeechText(customText);
     } else {
-      const quotes = currentProfile.quotes;
-      setSpeechText(quotes[Math.floor(Math.random() * quotes.length)]);
+      // Mengambil langsung dari daftar quotes spesifik profil yang aktif
+      const alonyskyDedicatedQuotes = [
+        "Target locked. Alonysky tactical sniper systems primed.",
+        "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
+        "Direct neural telemetry operating with zero latency.",
+      ];
+      const sun3ssDedicatedQuotes = [
+        "SYSTEM OVERRIDE DETECTED. Sun3ss monochrome skunk mode active.",
+        "Less abstraction, more raw performance. Binary is truth.",
+        "glitch protocol initiated! RGB splitting across memory boundaries.",
+      ];
+      const activeQuotes = isAlonysky ? alonyskyDedicatedQuotes : sun3ssDedicatedQuotes;
+      setSpeechText(activeQuotes[Math.floor(Math.random() * activeQuotes.length)]);
     }
   };
 
