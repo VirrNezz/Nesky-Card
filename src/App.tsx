@@ -33,17 +33,20 @@ export default function App() {
   // ==========================================
   useEffect(() => {
     const alonyskyYappingList = [
-      "Target locked. Alonysky tactical sniper systems primed.",
-      "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
-      "Direct neural telemetry operating with zero latency.",
-      "Systems optimized for maximum stealth and computational power.",
-      "Lagi ngecek struktur React 19 sama Tailwind nih... Biar makin smooth!",
+      "Harga Dolar US hari ini berapa yah? :/",
+      "Maaf kalau saya jarang online di misi ini... lagi komis atau sekroll hehe :v",
+      "When yah bisa traveling ke luar negri...",
+      "Target terdeteksi di arah timur, Target sedang rebahan 24/7??",
+      "Memanggil markas utama... Halo?",
+      "Hari ini mending masak atau jajan di luar yah?",
+      "Haloo kamu kelamaan diem disini, ada butuh apa? :3",
+      "Kalian lihat target kita gak?",
     ];
 
     const sun3ssYappingList = [
-      "Ngoprek low-level emang paling seru, sunyi tapi mematikan...",
-      "Assembly & C kernel hooks jalan terus tanpa halangan.",
-      "Mode stealth aktif. Jangan berisik, lagi analisis jaringan.",
+      "Uyy, iya kamu, tau cara ngehack akun ngep ngep ngga? wkwk",
+      "Jangan ketrigger sama logo komen di bot, orang API nya ngga nyala awokawokawokawok",
+      "Bau aku nyengat? ngga ah yg lain biasa aja (biasa nya pingsan maksud nya)",
       "Kopi mana kopi? Coding tanpa kopi itu bagaikan skunk tanpa bau khasnya :v",
     ];
 
