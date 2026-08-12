@@ -52,7 +52,7 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
     setImgError({ talking: false, silent: false });
   }, [activeProfileId]);
 
-  // Floating widget initial position (Hanya di-set sekali saat pertama load tanpa auto-resize paksa)
+  // Floating widget initial position
   useEffect(() => {
     const initialX = Math.max(10, window.innerWidth - 120);
     const initialY = Math.max(10, window.innerHeight - 220);
@@ -177,10 +177,9 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
   const handleDragEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
-    // Tanpa snap otomatis ke tengah/pinggir, posisi dibiarkan bebas di mana pengguna melepaskannya.
   };
 
-  // Event Listeners for dragging (support Windows Mouse & Android Touch with passive: false)
+  // Event Listeners for dragging
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
@@ -348,20 +347,17 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
             <button
               onClick={() => setShowChatInput((prev) => !prev)}
               title="Chat with Assistant"
-              className="p-1 rounded-full text-cyan-400 hover:text-cyan-200 hover:bg-white/10 transition-colors"
+              className="p-1 rounded-full text-cyan-400 hover:text-cyan-200 hover:bg-white/10 transition-colors cursor-pointer"
             >
               <MessageSquare size={12} />
             </button>
             <button
-              onClick={() =>
-                onSendMessage(
-                  isAlonysky
-                    ? "Explain the 3D perspective flip protocol!"
-                    : "Tell me about Sun3ss's stealth skunk architecture."
-                )
-              }
+              onClick={() => {
+                // Memanggil trigger kutipan acak sesuai persona aktif
+                onSendMessage('quote');
+              }}
               title="Trigger Random Quote"
-              className="p-1 rounded-full text-emerald-400 hover:text-emerald-200 hover:bg-white/10 transition-colors"
+              className="p-1 rounded-full text-emerald-400 hover:text-emerald-200 hover:bg-white/10 transition-colors cursor-pointer"
             >
               <Sparkles size={12} />
             </button>
@@ -384,7 +380,7 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
               </span>
               <button
                 onClick={() => setShowChatInput(false)}
-                className="p-0.5 rounded hover:bg-white/10 text-slate-400 hover:text-white"
+                className="p-0.5 rounded hover:bg-white/10 text-slate-400 hover:text-white cursor-pointer"
               >
                 <X size={14} />
               </button>
@@ -404,7 +400,7 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
               />
               <button
                 type="submit"
-                className={`p-1.5 rounded-lg border font-bold transition-all ${
+                className={`p-1.5 rounded-lg border font-bold transition-all cursor-pointer ${
                   isAlonysky
                     ? 'bg-cyan-600 hover:bg-cyan-500 border-cyan-400 text-white'
                     : 'bg-zinc-100 hover:bg-white border-zinc-300 text-black'
@@ -426,7 +422,7 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
                     onSendMessage(chip);
                     setShowChatInput(false);
                   }}
-                  className="px-2 py-0.5 rounded text-[10px] font-mono-code bg-white/5 hover:bg-white/15 border border-white/10 text-slate-300 transition-colors"
+                  className="px-2 py-0.5 rounded text-[10px] font-mono-code bg-white/5 hover:bg-white/15 border border-white/10 text-slate-300 transition-colors cursor-pointer"
                 >
                   {chip}
                 </button>
