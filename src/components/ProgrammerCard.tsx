@@ -30,7 +30,13 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
           }`}
         >
           {/* FRONT CARD - SUN3SS */}
-          <div className="absolute inset-0 w-full h-full backface-hidden pointer-events-auto">
+          <div
+            className={`absolute inset-0 w-full h-full backface-hidden transition-opacity duration-300 ${
+              activeProfileId === 'sun3ss'
+                ? 'opacity-100 pointer-events-auto z-20'
+                : 'opacity-0 pointer-events-none z-0'
+            }`}
+          >
             <Sun3ssCard
               onTriggerAssistantSpeak={onTriggerAssistantSpeak}
               soundEnabled={soundEnabled}
@@ -39,7 +45,13 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
           </div>
 
           {/* BACK CARD - ALONYSKY */}
-          <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 pointer-events-auto">
+          <div
+            className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 transition-opacity duration-300 ${
+              activeProfileId === 'alonysky'
+                ? 'opacity-100 pointer-events-auto z-20'
+                : 'opacity-0 pointer-events-none z-0'
+            }`}
+          >
             <AlonyskyCard
               onTriggerAssistantSpeak={onTriggerAssistantSpeak}
               soundEnabled={soundEnabled}
@@ -50,10 +62,10 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
       </div>
 
       {/* ELITE COMMAND PALETTE STYLE GLOBAL SWAP BUTTON */}
-      <div className="relative z-10">
+      <div className="relative z-20">
         <button
           onClick={onSwapProfile}
-          className={`group flex items-center gap-3 px-6 py-3 rounded-full border backdrop-blur-xl shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 ${
+          className={`group flex items-center gap-3 px-6 py-3 rounded-full border backdrop-blur-xl shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer ${
             activeProfileId === 'sun3ss'
               ? 'bg-zinc-900/90 text-zinc-100 border-zinc-700 hover:border-zinc-500 shadow-[0_0_25px_rgba(255,255,255,0.12)]'
               : 'bg-slate-900/90 text-cyan-100 border-cyan-500/40 hover:border-cyan-400 shadow-[0_0_25px_rgba(6,182,212,0.25)]'
@@ -66,7 +78,7 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
                 : 'bg-cyan-950 border-cyan-500/50 text-cyan-300'
             }`}
           >
-            <RefreshCw size={16} />
+            <RefreshCw size=ActiveProfileId={16} />
           </div>
           <div className="flex flex-col items-start text-left">
             <span className="text-[9px] font-mono-code uppercase tracking-widest text-slate-400">
