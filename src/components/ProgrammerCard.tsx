@@ -78,7 +78,7 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
                 : 'bg-cyan-950 border-cyan-500/50 text-cyan-300'
             }`}
           >
-            <RefreshCw size=ActiveProfileId={16} />
+            <RefreshCw size={16} />
           </div>
           <div className="flex flex-col items-start text-left">
             <span className="text-[9px] font-mono-code uppercase tracking-widest text-slate-400">
