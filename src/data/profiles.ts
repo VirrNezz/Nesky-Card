@@ -4,7 +4,7 @@ export const ALONYSKY_PROFILE: ProfileData = {
   id: 'alonysky',
   name: 'Alonysky',
   handle: '@alonysky',
-  title: 'Elite Cyber Sniper • Military Tech Operative',
+  title: 'Artist, Illustrator, and Animator • Learning Progress',
   role: 'Military Tech Operative',
   location: 'Tactical Grid // Sector 07',
   statusText: 'SNIPER_HUD_ONLINE // LOCK_ON',
