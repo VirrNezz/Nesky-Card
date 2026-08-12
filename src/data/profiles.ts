@@ -134,8 +134,8 @@ export const SUN3SS_PROFILE: ProfileData = {
     {
       id: 'tiktok-skunk',
       title: 'TikTok',
-      subtitle: '@sun3ss_skunk',
-      url: 'https://tiktok.com',
+      subtitle: 'Preset, Fursuit, Editing',
+      url: 'https://www.tiktok.com/@nesinezz_?_r=1&_t=ZS-98pR32I6AKX',
       icon: 'TikTok',
       gitDiffType: 'add',
       badge: 'TIKTOK',
@@ -143,8 +143,8 @@ export const SUN3SS_PROFILE: ProfileData = {
     {
       id: 'instagram-skunk',
       title: 'Instagram',
-      subtitle: '@sun3ss.official',
-      url: 'https://instagram.com',
+      subtitle: 'Random posting / daily life',
+      url: 'https://www.instagram.com/nesi_dragon?igsh=ZnMxb3lsbzAyaDVn',
       icon: 'Instagram',
       gitDiffType: 'add',
       badge: 'IG',
@@ -152,8 +152,8 @@ export const SUN3SS_PROFILE: ProfileData = {
     {
       id: 'github-skunk',
       title: 'github.com/sun3ss-skunk',
-      subtitle: 'Stealth Repos & Binary Tools',
-      url: 'https://github.com/sun3ss-skunk',
+      subtitle: 'Tool and source code',
+      url: 'https://github.com/VirrNezz',
       icon: 'Github',
       gitDiffType: 'delete',
       badge: 'STEALTH',
@@ -161,8 +161,8 @@ export const SUN3SS_PROFILE: ProfileData = {
     {
       id: 'telegram-skunk',
       title: 'Telegram',
-      subtitle: 't.me/sun3ss_skunk',
-      url: 'https://t.me/sun3ss_skunk',
+      subtitle: 'Suggestions and bug reports',
+      url: 'https://t.me/Nesinezz',
       icon: 'Mail',
       gitDiffType: 'add',
       badge: 'COMMS',
