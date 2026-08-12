@@ -196,9 +196,17 @@ export const AlonyskyCard: React.FC<AlonyskyCardProps> = ({
 
       {/* Main Content Body */}
       <div className="p-5 flex flex-col items-center flex-1 min-h-0 relative z-30 overflow-y-auto custom-scrollbar pointer-events-auto">
-        {/* Avatar Area */}
+        
+        {/* Avatar Area with Cyber Sniper Reticle */}
         <div className="relative mb-3 group shrink-0">
-          <div className="relative rounded-full p-1.5 transition-all duration-500 border-2 border-purple-500/60 shadow-[0_0_30px_rgba(168,85,247,0.4)] group-hover:border-cyan-400">
+          <div className="relative rounded-full p-1.5 transition-all duration-500 border-2 border-purple-500/60 shadow-[0_0_30px_rgba(168,85,247,0.4)] group-hover:border-cyan-400 group-hover:shadow-[0_0_35px_rgba(6,182,212,0.5)]">
+            
+            {/* Sniper Reticle Lines (Kembali Ditambahkan!) */}
+            <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-purple-400 shadow-[0_0_6px_#a855f7]" />
+            <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-purple-400 shadow-[0_0_6px_#a855f7]" />
+            <div className="absolute -left-2.5 top-1/2 -translate-y-1/2 h-0.5 w-3 bg-cyan-400 shadow-[0_0_6px_#06b6d4]" />
+            <div className="absolute -right-2.5 top-1/2 -translate-y-1/2 h-0.5 w-3 bg-cyan-400 shadow-[0_0_6px_#06b6d4]" />
+
             <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center overflow-hidden border bg-purple-950/80 border-purple-500/40">
               {!imgError ? (
                 <img
@@ -212,6 +220,11 @@ export const AlonyskyCard: React.FC<AlonyskyCardProps> = ({
                 <div className="text-2xl">👤</div>
               )}
             </div>
+          </div>
+
+          {/* Crosshair Icon Indicator di sudut kanan bawah avatar */}
+          <div className="absolute bottom-0 right-0 p-1 rounded-full border-2 bg-purple-950 border-purple-400 text-cyan-300 shadow-[0_0_10px_#a855f7]">
+            <Crosshair size={12} className="animate-pulse" />
           </div>
         </div>
 
