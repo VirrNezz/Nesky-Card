@@ -30,7 +30,7 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
   onSendMessage,
 }) => {
   // Draggable position state
-  const [position, setPosition] = useState({ x: 20, y: 120 }); // initial bottom-right/side offset
+  const [position, setPosition] = useState({ x: 20, y: 120 });
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef({ x: 0, y: 0 });
   const initialPosRef = useRef({ x: 0, y: 0 });
@@ -52,24 +52,11 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
     setImgError({ talking: false, silent: false });
   }, [activeProfileId]);
 
-  // Floating widget position initialization for responsive screens
+  // Floating widget initial position (Hanya di-set sekali saat pertama load tanpa auto-resize paksa)
   useEffect(() => {
-    const handleResize = () => {
-      const defaultX = Math.max(10, window.innerWidth - 220);
-      const defaultY = Math.max(10, window.innerHeight - 320);
-      setPosition((prev) => {
-        const clampedX = Math.min(Math.max(10, prev.x), window.innerWidth - 180);
-        const clampedY = Math.min(Math.max(10, prev.y), window.innerHeight - 200);
-        return { x: clampedX, y: clampedY };
-      });
-    };
-
-    const initialX = Math.max(10, window.innerWidth - 220);
-    const initialY = Math.max(10, window.innerHeight - 340);
+    const initialX = Math.max(10, window.innerWidth - 120);
+    const initialY = Math.max(10, window.innerHeight - 220);
     setPosition({ x: initialX, y: initialY });
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Audio Beep Effect for Speech / Drag
@@ -163,7 +150,7 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
     setPosition({ x: newX, y: newY });
   };
 
-  // Handle Touch Dragging
+  // Handle Touch Dragging (Android & Mobile)
   const handleTouchStart = (e: React.TouchEvent) => {
     if ((e.target as HTMLElement).closest('button, input, a')) return;
     if (e.touches.length !== 1) return;
@@ -190,39 +177,17 @@ export const PNGTuberWidget: React.FC<PNGTuberWidgetProps> = ({
   const handleDragEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
-
-    setPosition((prev) => {
-      const midPoint = window.innerWidth / 2;
-      const widgetSize = 96;
-      const snapPadding = 12;
-      const maxY = Math.max(12, window.innerHeight - widgetSize - 12);
-
-      let finalX: number;
-      if (prev.x + widgetSize / 2 < midPoint) {
-        finalX = snapPadding;
-      } else {
-        finalX = Math.max(snapPadding, window.innerWidth - widgetSize - snapPadding);
-      }
-
-      const finalY = Math.min(Math.max(12, prev.y), maxY);
-
-      return { x: finalX, y: finalY };
-    });
+    // Tanpa snap otomatis ke tengah/pinggir, posisi dibiarkan bebas di mana pengguna melepaskannya.
   };
 
+  // Event Listeners for dragging (support Windows Mouse & Android Touch with passive: false)
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleDragEnd);
-      window.addEventListener('touchmove', handleTouchMove);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
       window.addEventListener('touchend', handleDragEnd);
       window.addEventListener('touchcancel', handleDragEnd);
-    } else {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleDragEnd);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleDragEnd);
-      window.removeEventListener('touchcancel', handleDragEnd);
     }
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);

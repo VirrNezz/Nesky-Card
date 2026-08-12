@@ -21,7 +21,7 @@ export default function App() {
   const [transitionEffect, setTransitionEffect] = useState<TransitionEffect>('none');
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [speechText, setSpeechText] = useState<string>(
-    "Hello! I am your AI Assistant. Drag me around or click SWAP to flip 3D personas!"
+    "Wahh pendatang baru? mau nyoba yg mana dulu nih? (hati-hati ada link jebakan)"
   );
   const [showHelpModal, setShowHelpModal] = useState(false);
 
@@ -83,18 +83,20 @@ export default function App() {
     if (lower.includes('quote') || lower.includes('motivasi') || lower.includes('inspirasi')) {
       // Daftar kutipan khusus Alonysky (terpisah dari yapping)
       const alonyskyDedicatedQuotes = [
-        "Target locked. Alonysky tactical sniper systems primed.",
-        "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
-        "Direct neural telemetry operating with zero latency.",
-        "Systems optimized for maximum stealth and computational power.",
+        "Hidup itu terkadang naik dan turun, tetapi berusahalah untuk menaikkan tujuan hidupmu",
+        "Jangan lengah saat engkau di halangi, ubah halangan itu menjadi tantangan dalam meraih impian mu",
+        "Berusahalah untuk memberi daripada meminta",
+        "Lebih baik pertarungan juara daripada pertarungan jiwa",
+        "Jadilah diri sendiri dan jangan mencoba menghalagi ataupun meniru orang lain",
+        "Kamu itu hebat, semangat yah :3",
       ];
 
       // Daftar kutipan khusus Sun3ss (terpisah dari yapping)
       const sun3ssDedicatedQuotes = [
-        "SYSTEM OVERRIDE DETECTED. Sun3ss monochrome skunk mode active.",
-        "Less abstraction, more raw performance. Binary is truth.",
-        "glitch protocol initiated! RGB splitting across memory boundaries.",
-        "Check the Git diff sidebars — every link holds a stealth signature.",
+        "jadilah seperti spray skunk, bukan karna bau nya tapi karna kesetiaan nya yg nempel 1 minggu (apa sih bejir garing)",
+        "syukuri apa ada nya jangan ngeluh dengan yang kamu punya",
+        "coba lah untuk berdiri sendiri jangan kayak git push harus di push dulu (emang sistem nya gabut aja ngga ada qoutes yg bagus hehe)",
+        "jangan lah menyerah karna kalo kamu menyerah kalah sama semut dia aja kecil tapi pantang menyerah",
       ];
 
       const activeQuotes = isAlonysky ? alonyskyDedicatedQuotes : sun3ssDedicatedQuotes;
