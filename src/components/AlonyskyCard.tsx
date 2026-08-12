@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Github,
   Globe,
   Terminal,
   Mail,
@@ -17,6 +16,8 @@ import {
   Crosshair,
   Copy,
   Check,
+  Youtube,
+  MessageCircle,
 } from 'lucide-react';
 import { ProfileData } from '../types';
 import { ALONYSKY_PROFILE } from '../data/profiles';
@@ -28,8 +29,26 @@ interface AlonyskyCardProps {
   onToggleSound?: () => void;
 }
 
+// Custom SVG Icons untuk TikTok & Instagram
+const TikTokIcon = ({ size = 15, className = "" }) => (
+  <svg width={size} height={size} className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
+const InstagramIcon = ({ size = 15, className = "" }) => (
+  <svg width={size} height={size} className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
 const ICON_MAP: Record<string, React.ElementType> = {
-  Github,
+  TikTok: TikTokIcon,
+  Instagram: InstagramIcon,
+  Youtube: Youtube,
+  Discord: MessageCircle,
   Globe,
   Terminal,
   Mail,
@@ -82,6 +101,45 @@ export const AlonyskyCard: React.FC<AlonyskyCardProps> = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const [imgError, setImgError] = useState(false);
+
+  // Daftar tautan sosmed khusus Alonysky (TikTok, Instagram, YouTube, Discord)
+  const customAlonyskyLinks = [
+    {
+      id: 'tiktok',
+      title: 'TikTok',
+      subtitle: '@alonysky_tactical',
+      url: 'https://tiktok.com',
+      icon: 'TikTok',
+      accentColor: 'purple',
+    },
+    {
+      id: 'instagram',
+      title: 'Instagram',
+      subtitle: '@alonysky.official',
+      url: 'https://instagram.com',
+      icon: 'Instagram',
+      accentColor: 'cyan',
+    },
+    {
+      id: 'youtube',
+      title: 'YouTube',
+      subtitle: 'Alonysky Channel',
+      url: 'https://youtube.com',
+      icon: 'Youtube',
+      accentColor: 'blue',
+    },
+    {
+      id: 'discord',
+      title: 'Discord',
+      subtitle: 'Alonysky#0001',
+      url: 'https://discord.com',
+      icon: 'Discord',
+      accentColor: 'purple',
+    },
+  ];
+
+  // Gunakan custom links jika profile.links bawaan ingin dioverride
+  const displayLinks = customAlonyskyLinks.length > 0 ? customAlonyskyLinks : profile.links;
 
   const handleCopyId = () => {
     navigator.clipboard.writeText(`ID: ${profile.id.toUpperCase()}-2026-TACTICAL`);
@@ -209,10 +267,10 @@ export const AlonyskyCard: React.FC<AlonyskyCardProps> = ({
           </div>
         </div>
 
-        {/* Links Section */}
+        {/* Links Section (TikTok, Instagram, YouTube, Discord) */}
         <div className="w-full flex-grow mt-2">
           <div className="w-full space-y-2">
-            {profile.links.map((link) => {
+            {displayLinks.map((link) => {
               const IconComp = ICON_MAP[link.icon] || Globe;
               const linkStyles = getLinkColorStyles(link.accentColor);
 
