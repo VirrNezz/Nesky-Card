@@ -124,14 +124,14 @@ export default function App() {
     } else {
       // Mengambil langsung dari daftar quotes spesifik profil yang aktif
       const alonyskyDedicatedQuotes = [
-        "Target locked. Alonysky tactical sniper systems primed.",
-        "Presisi militer siber aktif. Mengamankan perimeter arsitektur.",
-        "Direct neural telemetry operating with zero latency.",
+        "ada filter typing tersembunyi lhooo",
+        "Better gear = better aim ",
+        "tenang, sunyi, tanpa aba-aba langsung DUAR!!!",
       ];
       const sun3ssDedicatedQuotes = [
-        "SYSTEM OVERRIDE DETECTED. Sun3ss monochrome skunk mode active.",
-        "Less abstraction, more raw performance. Binary is truth.",
-        "glitch protocol initiated! RGB splitting across memory boundaries.",
+        "Bau aku tuh tergantung sama yg aku makan sebelum nya hehe",
+        "Jadi pengen makan enak deh (salah satu nya ubi cilembu)",
+        "*nesi : Jangan di kasih Ubi cilembu woyy!!!",
       ];
       const activeQuotes = isAlonysky ? alonyskyDedicatedQuotes : sun3ssDedicatedQuotes;
       setSpeechText(activeQuotes[Math.floor(Math.random() * activeQuotes.length)]);
