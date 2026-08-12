@@ -30,11 +30,7 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
           }`}
         >
           {/* FRONT CARD - SUN3SS */}
-          <div
-            className={`absolute inset-0 w-full h-full backface-hidden ${
-              activeProfileId === 'sun3ss' ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'
-            }`}
-          >
+          <div className="absolute inset-0 w-full h-full backface-hidden pointer-events-auto">
             <Sun3ssCard
               onTriggerAssistantSpeak={onTriggerAssistantSpeak}
               soundEnabled={soundEnabled}
@@ -43,11 +39,7 @@ export const ProgrammerCard: React.FC<ProgrammerCardProps> = ({
           </div>
 
           {/* BACK CARD - ALONYSKY */}
-          <div
-            className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 ${
-              activeProfileId === 'alonysky' ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'
-            }`}
-          >
+          <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 pointer-events-auto">
             <AlonyskyCard
               onTriggerAssistantSpeak={onTriggerAssistantSpeak}
               soundEnabled={soundEnabled}

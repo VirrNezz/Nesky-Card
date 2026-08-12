@@ -71,17 +71,16 @@ export default function App() {
     } else {
       setTransitionEffect('sniper');
       setActiveProfileId('alonysky');
-      setSpeechText("MISSION COMPLETED!! Welcome back AlonySky... We have been waiting fo you");
+      setSpeechText("MISSION COMPLETED!! Welcome back AlonySky... We have been waiting for you");
       setTimeout(() => setTransitionEffect('none'), 1000);
     }
   };
 
-  // Assistant prompt/response handler (Kutipan/Quotes dipisah secara tegas per persona)
+  // Assistant prompt/response handler
   const handleSendMessage = (msg: string) => {
     const lower = msg.toLowerCase();
 
     if (lower.includes('quote') || lower.includes('motivasi') || lower.includes('inspirasi')) {
-      // Daftar kutipan khusus Alonysky (terpisah dari yapping)
       const alonyskyDedicatedQuotes = [
         "Hidup itu terkadang naik dan turun, tetapi berusahalah untuk menaikkan tujuan hidupmu",
         "Jangan lengah saat engkau di halangi, ubah halangan itu menjadi tantangan dalam meraih impian mu",
@@ -91,7 +90,6 @@ export default function App() {
         "Kamu itu hebat, semangat yah :3",
       ];
 
-      // Daftar kutipan khusus Sun3ss (terpisah dari yapping)
       const sun3ssDedicatedQuotes = [
         "jadilah seperti spray skunk, bukan karna bau nya tapi karna kesetiaan nya yg nempel 1 minggu (apa sih bejir garing)",
         "syukuri apa ada nya jangan ngeluh dengan yang kamu punya",
@@ -118,20 +116,20 @@ export default function App() {
     }
   };
 
+  // Teks khusus untuk tombol logo Sparkles sudah diperbarui di sini!
   const handleTriggerSpeak = (customText?: string) => {
     if (customText) {
       setSpeechText(customText);
     } else {
-      // Mengambil langsung dari daftar quotes spesifik profil yang aktif
       const alonyskyDedicatedQuotes = [
-        "ada filter typing tersembunyi lhooo",
-        "Better gear = better aim ",
-        "tenang, sunyi, tanpa aba-aba langsung DUAR!!!",
+        "Ngapain pencet tombol nya? ada sesuatu yg di butuhin?",
+        "Better gear = Better aim",
+        "Sunyi, Tenang, tiba-tiba DUARRR!!!!",
       ];
       const sun3ssDedicatedQuotes = [
-        "Bau aku tuh tergantung sama yg aku makan sebelum nya hehe",
-        "Jadi pengen makan enak deh (salah satu nya ubi cilembu)",
-        "*nesi : Jangan di kasih Ubi cilembu woyy!!!",
+        "Jadi makan ubi cilembu kayak nya enak deh ;p",
+        "Bau aroma spray aku tergantung aku makan apa sebelum nya hehe",
+        "*nesi : Jangan kasih di makan ubi cilembu woiii",
       ];
       const activeQuotes = isAlonysky ? alonyskyDedicatedQuotes : sun3ssDedicatedQuotes;
       setSpeechText(activeQuotes[Math.floor(Math.random() * activeQuotes.length)]);
@@ -140,7 +138,6 @@ export default function App() {
 
   return (
     <div
-      key={activeProfileId}
       className={`min-h-screen w-full flex flex-col justify-between transition-all duration-1000 font-space relative overflow-y-auto select-none animate-fade-in ${
         isAlonysky ? 'text-slate-300' : 'text-zinc-300'
       }`}
