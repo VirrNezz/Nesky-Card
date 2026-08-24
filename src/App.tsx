@@ -360,7 +360,7 @@ function MainHomePage() {
 // ROOT APP DENGAN REACT ROUTER DOM
 // ==========================================
 export default function App() {
-  return
+  return (
     <BrowserRouter>
       <Routes>
         {/* Rute Halaman Utama */}
