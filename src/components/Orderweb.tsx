@@ -5,25 +5,23 @@ export const OrderWeb: React.FC = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [lang, setLang] = useState<'id' | 'en'>('id');
 
-  // Data card melayang yang bisa digeser
+  // Data card melayang dengan deskripsi bahasa Inggris yang natural
   const showcaseCards = [
     {
-      title: lang === 'id' ? 'Cyberpunk Tactical ID Card' : 'Cyberpunk Tactical ID Card',
+      title: 'Juno Card',
       desc: lang === 'id' 
-        ? 'Card interaktif dengan efek 3D, widget PNGTuber, dan suara sapaan otomatis.' 
-        : 'Interactive card with 3D effects, PNGTuber widget, and automatic greeting sounds.',
-      tag: lang === 'id' ? 'Paling Populer 🔥' : 'Most Popular 🔥',
-      image: '/web-pic.jpg',
-      link: 'https://github.com/'
+        ? 'Card Interaktif Dengan Fitur Card Fursona Dan Art Gallery' 
+        : 'An interactive showcase featuring dedicated fursona cards and an art gallery layout.',
+      tag: lang === 'id' ? 'Paling Disukai' : 'Most Liked',
+      link: 'https://juno-card.vercel.app'
     },
     {
-      title: lang === 'id' ? 'Stealth Skunk Portfolio' : 'Stealth Skunk Portfolio',
+      title: 'Capruk Card',
       desc: lang === 'id' 
-        ? 'Desain gelap bertema hacker/skunk dengan performa super ngebut dan estetik.' 
-        : 'Dark hacker/skunk-themed design with lightning-fast performance and aesthetics.',
+        ? 'Desain Tenang bertema Aquatic Dengan Bermacam-Macam Media Sosial Card yang estetik' 
+        : 'A serene aquatic-themed aesthetic design packed with clean, stylized social media cards.',
       tag: lang === 'id' ? 'Desain Khusus 🚀' : 'Custom Design 🚀',
-      image: '/FSC-Profile.jpeg',
-      link: 'https://github.com/'
+      link: 'https://capruk-card.vercel.app'
     }
   ];
 
@@ -66,15 +64,15 @@ export const OrderWeb: React.FC = () => {
         </div>
       </div>
 
-      {/* Title Rayuan Pelanggan */}
+      {/* Title Rayuan Pelanggan (Natural English) */}
       <div className="max-w-xl w-full text-center mb-6 z-20">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
           {lang === 'id' ? 'Mau web seperti ini? 😏✨' : 'Want a website like this? 😏✨'}
         </h1>
         <p className="text-xs text-slate-400">
           {lang === 'id' 
-            ? 'Bikin web profil / portofolio interaktif impianmu sekarang juga di support ID/EN language!' 
-            : 'Build your dream interactive profile / portfolio website right now with ID/EN language support!'}
+            ? 'Bikin web profil / portofolio interaktif impianmu sekarang juga dengan dukungan bahasa ID/EN!' 
+            : 'Bring your dream interactive portfolio or profile to life with full ID/EN language support!'}
         </p>
       </div>
 
@@ -82,15 +80,17 @@ export const OrderWeb: React.FC = () => {
       <div className="max-w-md w-full relative mb-8 z-20">
         <div className="relative bg-[#0d1117] border border-cyan-500/50 rounded-3xl p-5 shadow-[0_0_35px_rgba(6,182,212,0.25)] transition-all duration-500 hover:scale-[1.02]">
           
-          <span className="absolute top-4 right-4 px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono-code font-bold">
+          <span className="absolute top-4 right-4 z-10 px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono-code font-bold backdrop-blur-md">
             {showcaseCards[currentCardIndex].tag}
           </span>
 
-          <div className="w-full h-40 rounded-2xl overflow-hidden mb-4 border border-white/10 bg-black">
-            <img 
-              src={showcaseCards[currentCardIndex].image} 
-              alt="Preview" 
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+          {/* Kotak Live Preview Iframe */}
+          <div className="w-full h-40 rounded-2xl overflow-hidden mb-4 border border-white/10 bg-black relative">
+            <iframe 
+              src={showcaseCards[currentCardIndex].link} 
+              title="Live Web Preview"
+              className="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none border-0"
+              loading="lazy"
             />
           </div>
 
@@ -108,7 +108,7 @@ export const OrderWeb: React.FC = () => {
             rel="noopener noreferrer"
             className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-cyan-300 font-mono-code text-xs font-bold flex items-center justify-center gap-2 transition-all cursor-pointer mb-3"
           >
-            <span>{lang === 'id' ? 'KUNJUNGI PREVIEW LINK 🔗' : 'VISIT PREVIEW LINK 🔗'}</span>
+            <span>{lang === 'id' ? 'KUNJUNGI PREVIEW LINK 🔗' : 'VISIT LIVE PREVIEW 🔗'}</span>
           </a>
 
           {/* Tombol Geser Card */}
@@ -142,10 +142,10 @@ export const OrderWeb: React.FC = () => {
             <span className="text-[10px] font-mono-code text-slate-400 block">
               {lang === 'id' ? 'KONTAK RESMI TELEGRAM' : 'OFFICIAL TELEGRAM CONTACT'}
             </span>
-            <span className="font-mono-code text-xs font-bold text-cyan-300">@alonysky / @sun3ss</span>
+            <span className="font-mono-code text-xs font-bold text-cyan-300">『#RVX』Sun3ss@B.P.Tʜʏʀᴏ⸸</span>
           </div>
           <a
-            href="https://t.me/usernamekamu" 
+            href="https://t.me/Nesinezz?text=Hi%2C%20I%27m%20interested%20in%20commissioning%20a%20website!" 
             target="_blank" 
             rel="noopener noreferrer"
             className="px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono-code text-xs font-bold transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)] cursor-pointer"
@@ -154,10 +154,10 @@ export const OrderWeb: React.FC = () => {
           </a>
         </div>
 
-        {/* Pilihan: Tanya tentang web & Mau beli */}
+        {/* Pilihan: Tanya tentang web & Mau beli (Bahasa Inggris natural) */}
         <div className="grid grid-cols-2 gap-3">
           <a
-            href="https://t.me/usernamekamu"
+            href="https://t.me/Nesinezz?text=Hi%2C%20I%20have%20a%20few%20questions%20about%20your%20website%20commissions."
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 rounded-2xl bg-[#0d1117] hover:bg-cyan-950/30 border border-cyan-500/30 hover:border-cyan-400 text-center transition-all cursor-pointer group"
@@ -172,7 +172,7 @@ export const OrderWeb: React.FC = () => {
           </a>
 
           <a
-            href="https://discord.gg/RVZSxzjs"
+            href="https://t.me/Nesinezz?text=Hi%2C%20I%20would%20like%20to%20order%20a%20website%20commission!"
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 rounded-2xl bg-[#0d1117] hover:bg-emerald-950/30 border border-emerald-500/30 hover:border-emerald-400 text-center transition-all cursor-pointer group"
