@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import {
   Sparkles,
   RefreshCw,
@@ -10,13 +11,69 @@ import {
   X,
   Terminal,
   Zap,
+  ArrowLeft,
 } from 'lucide-react';
 import { PROFILES } from './data/profiles';
 import { ProfileId, TransitionEffect } from './types';
 import { ProgrammerCard } from './components/ProgrammerCard';
 import { PNGTuberWidget } from './components/PNGTuberWidget';
 
-export default function App() {
+// ==========================================
+// HALAMAN DIREKTORI KHUSUS: /order-web
+// ==========================================
+function OrderWebPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-[#090d14] text-slate-100 p-6 flex flex-col items-center justify-center font-space">
+      <div className="max-w-md w-full bg-[#0d1117] border border-cyan-500/40 rounded-2xl p-6 shadow-[0_0_30px_rgba(6,182,212,0.2)]">
+        
+        {/* Tombol Kembali ke Beranda */}
+        <button 
+          onClick={() => navigate('/')} 
+          className="inline-flex items-center gap-1.5 text-xs font-mono-code text-cyan-400 hover:text-cyan-300 mb-6 transition-colors cursor-pointer"
+        >
+          <ArrowLeft size={14} />
+          <span>BACK_TO_MAIN_HUD</span>
+        </button>
+
+        <div className="flex items-center gap-2 mb-4">
+          <Terminal size={20} className="text-cyan-400" />
+          <h1 className="text-xl font-bold tracking-tight text-cyan-200">
+            ORDER_WEB_PORTAL
+          </h1>
+        </div>
+
+        <p className="text-xs text-slate-400 mb-6 leading-relaxed">
+          Halaman direktori khusus untuk pemesanan website atau komisi digital dari card Sun3ss / Alonysky!
+        </p>
+
+        {/* Contoh info & aksi */}
+        <div className="space-y-3 font-mono-code text-xs">
+          <div className="p-3 rounded-xl bg-black/50 border border-white/10 flex justify-between items-center">
+            <span>Status Komisi:</span>
+            <span className="text-emerald-400 font-bold">OPEN / AVAILABLE</span>
+          </div>
+          <a
+            href="https://discord.gg/RVZSxzjs" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-full py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] cursor-pointer"
+          >
+            <Sparkles size={14} />
+            <span>CONTACT VIA DISCORD</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+// ==========================================
+// HALAMAN UTAMA (DOUBLE CARD HUD)
+// ==========================================
+function MainHomePage() {
   const [activeProfileId, setActiveProfileId] = useState<ProfileId>('sun3ss');
   const [transitionEffect, setTransitionEffect] = useState<TransitionEffect>('none');
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -28,9 +85,7 @@ export default function App() {
   const currentProfile = PROFILES[activeProfileId];
   const isAlonysky = activeProfileId === 'alonysky';
 
-  // ==========================================
-  // FITUR YAPPING OTOMATIS (BANYAK OMONG BERKALA)
-  // ==========================================
+  // Fitur Yapping Otomatis Berkala
   useEffect(() => {
     const alonyskyYappingList = [
       "Harga Dolar US hari ini berapa yah? :/",
@@ -59,7 +114,7 @@ export default function App() {
     return () => clearInterval(yappingInterval);
   }, [isAlonysky]);
 
-  // Handle Card Flip and Simultaneous Transition Effects
+  // Handle Card Swap
   const handleSwapProfile = () => {
     const nextProfileId: ProfileId = activeProfileId === 'alonysky' ? 'sun3ss' : 'alonysky';
 
@@ -116,7 +171,6 @@ export default function App() {
     }
   };
 
-  // Teks khusus untuk tombol logo Sparkles sudah diperbarui di sini!
   const handleTriggerSpeak = (customText?: string) => {
     if (customText) {
       setSpeechText(customText);
@@ -149,7 +203,7 @@ export default function App() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Immersive Background Grids & Ambient Glows */}
+      {/* Background Grids & Ambient Glows */}
       <div
         className="absolute inset-0 opacity-20 pointer-events-none transition-opacity duration-700"
         style={{
@@ -164,24 +218,21 @@ export default function App() {
             : 'bg-gradient-to-br from-zinc-800/10 via-transparent to-zinc-950/20'
         }`}
       />
-      {/* Central Ambient Glow Orb */}
       <div
         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[120px] pointer-events-none transition-colors duration-700 ${
           isAlonysky ? 'bg-cyan-500/5' : 'bg-zinc-400/5'
         }`}
       />
 
-      {/* Subtle Background Target Ring Simulation */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-slate-800/40 rounded-full flex items-center justify-center pointer-events-none">
         <div className="w-[1px] h-full bg-slate-800/20 absolute" />
         <div className="w-full h-[1px] bg-slate-800/20 absolute" />
         <div className="w-12 h-12 border border-slate-700/30 rounded-full" />
       </div>
 
-      {/* Outer Subtle Frame Border */}
       <div className="absolute inset-2 sm:inset-4 pointer-events-none border border-cyan-500/10 rounded-3xl z-0" />
 
-      {/* Top Telemetry HUD Navbar Header */}
+      {/* Top HUD Navbar */}
       <header className="relative z-20 w-full max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between border-b border-slate-800/80 backdrop-blur-md bg-slate-900/40 mt-2 rounded-2xl">
         <div className="flex items-center space-x-3">
           <div
@@ -216,8 +267,6 @@ export default function App() {
               </span>
               <span className="opacity-30">|</span>
               <span>LATENCY: 12ms</span>
-              <span className="opacity-30 hidden sm:inline">|</span>
-              <span className="hidden sm:inline">ENCRYPTION: AES-256</span>
             </div>
           </div>
         </div>
@@ -225,7 +274,7 @@ export default function App() {
         <div className="flex items-center space-x-2 mt-2 sm:mt-0">
           <button
             onClick={() => setSoundEnabled((prev) => !prev)}
-            className="p-2 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition-colors"
+            className="p-2 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title={soundEnabled ? 'Mute SFX' : 'Enable SFX'}
           >
             {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} className="text-slate-500" />}
@@ -233,7 +282,7 @@ export default function App() {
 
           <button
             onClick={() => setShowHelpModal(true)}
-            className="p-2 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition-colors"
+            className="p-2 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
             title="Help & Info"
           >
             <HelpCircle size={16} />
@@ -265,23 +314,18 @@ export default function App() {
         }}
       />
 
-      {/* Footer info bar */}
+      {/* Footer */}
       <footer className="relative z-20 w-full max-w-6xl mx-auto px-4 py-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono-code text-slate-400 gap-2">
         <div className="flex items-center space-x-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>STATUS: ALL_SYSTEMS_OPERATIONAL (YAPPING_ENABLED)</span>
+          <span>STATUS: ALL_SYSTEMS_OPERATIONAL</span>
         </div>
-
-        <div className="flex items-center space-x-4">
-          <span>PNGTUBER: DRAGGABLE (TOUCH & MOUSE)</span>
-          <span>•</span>
-          <span>3D FLIP: PERSPECTIVE-1000</span>
-        </div>
+        <span>PNGTUBER: DRAGGABLE (TOUCH & MOUSE)</span>
       </footer>
 
-      {/* Help / Guide Modal */}
+      {/* Help Modal */}
       {showHelpModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div
             className={`w-full max-w-md p-6 rounded-2xl border shadow-2xl relative ${
               isAlonysky
@@ -291,45 +335,40 @@ export default function App() {
           >
             <button
               onClick={() => setShowHelpModal(false)}
-              className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white"
+              className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white cursor-pointer"
             >
               <X size={18} />
             </button>
-
-            <div className="flex items-center space-x-2 mb-4">
-              <Terminal size={20} className={isAlonysky ? 'text-cyan-400' : 'text-zinc-200'} />
-              <h3 className="font-space text-lg font-bold">Programmer ID Card Guide</h3>
-            </div>
-
-            <div className="space-y-3 font-space text-xs leading-relaxed text-slate-300">
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <p className="font-semibold text-white mb-1">1. 3D Dual Persona Flip</p>
-                <p>
-                  Click <strong>SWAP PERSONA</strong> to flip between <strong>Alonysky</strong> and <strong>Sun3ss</strong>.
-                </p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                <p className="font-semibold text-white mb-1">2. Draggable Yapping PNGTuber</p>
-                <p>
-                  Avatar akan otomatis "yapping" (banyak omong sendiri) secara berkala atau merespons ketika kamu mengetik prompt/mengklik tombol interaktif di kartu!
-                </p>
-              </div>
-            </div>
-
+            <h3 className="font-space text-lg font-bold mb-3">System Guide</h3>
+            <p className="text-xs text-slate-300 mb-4">
+              Gunakan tombol di card untuk berinteraksi, dan akses direktori order web melalui tombol tautan yang disediakan di card Sun3ss!
+            </p>
             <button
               onClick={() => setShowHelpModal(false)}
-              className={`mt-5 w-full py-2.5 rounded-xl font-space font-bold text-xs transition-all ${
-                isAlonysky
-                  ? 'bg-cyan-500 hover:bg-cyan-400 text-black'
-                  : 'bg-zinc-100 hover:bg-white text-black'
-              }`}
+              className="w-full py-2.5 rounded-xl font-space font-bold text-xs bg-cyan-600 text-white cursor-pointer"
             >
-              GOT IT, CLOSE
+              TUTUP
             </button>
           </div>
         </div>
       )}
     </div>
+  );
+}
+
+// ==========================================
+// ROOT APP DENGAN REACT ROUTER DOM
+// ==========================================
+export default function App() {
+  return
+    <BrowserRouter>
+      <Routes>
+        {/* Rute Halaman Utama */}
+        <Route path="/" element={<MainHomePage />} />
+        
+        {/* Rute Halaman Direktori Order Web */}
+        <Route path="/order-web" element={<OrderWebPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
