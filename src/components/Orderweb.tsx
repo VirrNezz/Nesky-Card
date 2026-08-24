@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Sparkles, Terminal } from 'lucide-react';
+import { ArrowLeft, Sparkles, Terminal, Smartphone, Monitor } from 'lucide-react';
 
 export const OrderWeb: React.FC = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [lang, setLang] = useState<'id' | 'en'>('id');
+  const [aspectRatio, setAspectRatio] = useState<'16:9' | '9:16'>('16:9'); // State untuk atur ukuran preview
 
-  // Data card melayang dengan deskripsi bahasa Inggris yang natural
+  // Data card melayang dengan link tujuan live preview
   const showcaseCards = [
     {
       title: 'Juno Card',
@@ -64,7 +65,7 @@ export const OrderWeb: React.FC = () => {
         </div>
       </div>
 
-      {/* Title Rayuan Pelanggan (Natural English) */}
+      {/* Title Rayuan Pelanggan */}
       <div className="max-w-xl w-full text-center mb-6 z-20">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-2">
           {lang === 'id' ? 'Mau web seperti ini? 😏✨' : 'Want a website like this? 😏✨'}
@@ -80,12 +81,40 @@ export const OrderWeb: React.FC = () => {
       <div className="max-w-md w-full relative mb-8 z-20">
         <div className="relative bg-[#0d1117] border border-cyan-500/50 rounded-3xl p-5 shadow-[0_0_35px_rgba(6,182,212,0.25)] transition-all duration-500 hover:scale-[1.02]">
           
-          <span className="absolute top-4 right-4 z-10 px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono-code font-bold backdrop-blur-md">
-            {showcaseCards[currentCardIndex].tag}
-          </span>
+          <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+            {/* Tombol Pengubah Ukuran Rasio (9:16 / 16:9) */}
+            <div className="flex items-center bg-black/60 border border-cyan-500/40 rounded-lg p-0.5 text-[10px] font-mono-code">
+              <button
+                onClick={() => setAspectRatio('16:9')}
+                className={`px-2 py-0.5 rounded flex items-center gap-1 transition-all cursor-pointer ${
+                  aspectRatio === '16:9' ? 'bg-cyan-500 text-black font-bold' : 'text-slate-300 hover:text-white'
+                }`}
+                title="Desktop View (16:9)"
+              >
+                <Monitor size={12} /> 16:9
+              </button>
+              <button
+                onClick={() => setAspectRatio('9:16')}
+                className={`px-2 py-0.5 rounded flex items-center gap-1 transition-all cursor-pointer ${
+                  aspectRatio === '9:16' ? 'bg-cyan-500 text-black font-bold' : 'text-slate-300 hover:text-white'
+                }`}
+                title="Mobile View (9:16)"
+              >
+                <Smartphone size={12} /> 9:16
+              </button>
+            </div>
 
-          {/* Kotak Live Preview Iframe */}
-          <div className="w-full h-40 rounded-2xl overflow-hidden mb-4 border border-white/10 bg-black relative">
+            <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono-code font-bold backdrop-blur-md">
+              {showcaseCards[currentCardIndex].tag}
+            </span>
+          </div>
+
+          {/* Kotak Live Preview Iframe dengan Ukuran Dinamis (16:9 atau 9:16) */}
+          <div 
+            className={`w-full rounded-2xl overflow-hidden mb-4 border border-white/10 bg-black relative transition-all duration-300 ${
+              aspectRatio === '9:16' ? 'h-96' : 'h-48'
+            }`}
+          >
             <iframe 
               src={showcaseCards[currentCardIndex].link} 
               title="Live Web Preview"
@@ -101,7 +130,7 @@ export const OrderWeb: React.FC = () => {
             {showcaseCards[currentCardIndex].desc}
           </p>
 
-          {/* Hyperlink ke preview / card terkait */}
+          {/* Hyperlink ke preview */}
           <a
             href={showcaseCards[currentCardIndex].link}
             target="_blank"
@@ -142,10 +171,10 @@ export const OrderWeb: React.FC = () => {
             <span className="text-[10px] font-mono-code text-slate-400 block">
               {lang === 'id' ? 'KONTAK RESMI TELEGRAM' : 'OFFICIAL TELEGRAM CONTACT'}
             </span>
-            <span className="font-mono-code text-xs font-bold text-cyan-300">『#RVX』Sun3ss@B.P.Tʜʏʀᴏ⸸</span>
+            <span className="font-mono-code text-xs font-bold text-cyan-300">@usernamekamu</span>
           </div>
           <a
-            href="https://t.me/Nesinezz?text=Hi%2C%20I%27m%20interested%20in%20commissioning%20a%20website!" 
+            href="https://t.me/usernamekamu?text=Hi%2C%20I%27m%20interested%20in%20commissioning%20a%20website!" 
             target="_blank" 
             rel="noopener noreferrer"
             className="px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono-code text-xs font-bold transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)] cursor-pointer"
@@ -154,10 +183,10 @@ export const OrderWeb: React.FC = () => {
           </a>
         </div>
 
-        {/* Pilihan: Tanya tentang web & Mau beli (Bahasa Inggris natural) */}
+        {/* Pilihan: Tanya tentang web & Mau beli */}
         <div className="grid grid-cols-2 gap-3">
           <a
-            href="https://t.me/Nesinezz?text=Hi%2C%20I%20have%20a%20few%20questions%20about%20your%20website%20commissions."
+            href="https://t.me/usernamekamu?text=Hi%2C%20I%20have%20a%20few%20questions%20about%20your%20website%20commissions."
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 rounded-2xl bg-[#0d1117] hover:bg-cyan-950/30 border border-cyan-500/30 hover:border-cyan-400 text-center transition-all cursor-pointer group"
@@ -172,7 +201,7 @@ export const OrderWeb: React.FC = () => {
           </a>
 
           <a
-            href="https://t.me/Nesinezz?text=Hi%2C%20I%20would%20like%20to%20order%20a%20website%20commission!"
+            href="https://t.me/usernamekamu?text=Hi%2C%20I%20would%20like%20to%20order%20a%20website%20commission!"
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 rounded-2xl bg-[#0d1117] hover:bg-emerald-950/30 border border-emerald-500/30 hover:border-emerald-400 text-center transition-all cursor-pointer group"
