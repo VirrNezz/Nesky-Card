@@ -171,10 +171,10 @@ export const OrderWeb: React.FC = () => {
             <span className="text-[10px] font-mono-code text-slate-400 block">
               {lang === 'id' ? 'KONTAK RESMI TELEGRAM' : 'OFFICIAL TELEGRAM CONTACT'}
             </span>
-            <span className="font-mono-code text-xs font-bold text-cyan-300">@usernamekamu</span>
+            <span className="font-mono-code text-xs font-bold text-cyan-300">『#RVX』Sun3ss@B.P.Tʜʏʀᴏ⸸</span>
           </div>
           <a
-            href="https://t.me/usernamekamu?text=Hi%2C%20I%27m%20interested%20in%20commissioning%20a%20website!" 
+            href="https://t.me/Nesinezz?text=Hi%2C%20I%27m%20interested%20in%20commissioning%20a%20website!" 
             target="_blank" 
             rel="noopener noreferrer"
             className="px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono-code text-xs font-bold transition-all shadow-[0_0_10px_rgba(6,182,212,0.3)] cursor-pointer"
@@ -186,7 +186,7 @@ export const OrderWeb: React.FC = () => {
         {/* Pilihan: Tanya tentang web & Mau beli */}
         <div className="grid grid-cols-2 gap-3">
           <a
-            href="https://t.me/usernamekamu?text=Hi%2C%20I%20have%20a%20few%20questions%20about%20your%20website%20commissions."
+            href="https://t.me/Nesinezz?text=Hi%2C%20I%20have%20a%20few%20questions%20about%20your%20website%20commissions."
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 rounded-2xl bg-[#0d1117] hover:bg-cyan-950/30 border border-cyan-500/30 hover:border-cyan-400 text-center transition-all cursor-pointer group"
@@ -201,7 +201,7 @@ export const OrderWeb: React.FC = () => {
           </a>
 
           <a
-            href="https://t.me/usernamekamu?text=Hi%2C%20I%20would%20like%20to%20order%20a%20website%20commission!"
+            href="https://t.me/Nesinezz?text=Hi%2C%20I%20would%20like%20to%20order%20a%20website%20commission!"
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 rounded-2xl bg-[#0d1117] hover:bg-emerald-950/30 border border-emerald-500/30 hover:border-emerald-400 text-center transition-all cursor-pointer group"
