@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Sparkles, Terminal, Smartphone, Monitor } from 'lucide-react';
 
 export const OrderWeb: React.FC = () => {
+  // Mengubah judul tab browser khusus untuk Halaman Order Web
+  useEffect(() => {
+    document.title = 'Order Web Commission | Portfolio Showcase';
+  }, []);
+
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [lang, setLang] = useState<'id' | 'en'>('id');
   const [aspectRatio, setAspectRatio] = useState<'16:9' | '9:16'>('16:9'); // State untuk atur ukuran preview
@@ -28,8 +33,8 @@ export const OrderWeb: React.FC = () => {
       title: 'Nesky Card',
       desc: lang === 'id'
         ? 'Sebuah Card Sepasang 2 Naga Yang Mesra Dalam Satu Web Dengan Temanya Masing-Masing'
-        : 'A card for a pair of 2 friendly dragons on one website with their own themes',
-      tag: lang === 'id' ? 'paling romantis' : 'most romantic',
+        : 'A card for a pair of friendly dragons on one website with their own custom themes.',
+      tag: lang === 'id' ? 'Paling Romantis' : 'Most Romantic',
       link: 'https://nesky-card.vercel.app'
     },
     {
@@ -37,7 +42,7 @@ export const OrderWeb: React.FC = () => {
       desc: lang === 'id'
         ? 'Sebuah Komunitas Dengan Tema Yang Menarik Yaitu Komunitas Furry Yang Estetik Dan Profesional'
         : 'A community with an engaging theme: an aesthetic and professional furry community.',
-      tag: lang === 'id' ? 'paling mahal karna banyak fitur' : 'most expensive cause a lot of feature',
+      tag: lang === 'id' ? 'Fitur Terlengkap' : 'Most Features',
       link: 'https://furry-society-group.my.id'
     },
   ];

@@ -16,12 +16,17 @@ import { PROFILES } from './data/profiles';
 import { ProfileId, TransitionEffect } from './types';
 import { ProgrammerCard } from './components/ProgrammerCard';
 import { PNGTuberWidget } from './components/PNGTuberWidget';
-import { OrderWeb } from './components/Orderweb'; // Memanggil dari file Orderweb.tsx terpisah
+import { OrderWeb } from './components/Orderweb';
 
 // ==========================================
 // HALAMAN UTAMA (DOUBLE CARD HUD)
 // ==========================================
 function MainHomePage() {
+  // Mengubah judul tab browser khusus untuk Halaman Utama
+  useEffect(() => {
+    document.title = 'Programmer ID Card | Alonysky & Sun3ss HUD';
+  }, []);
+
   const [activeProfileId, setActiveProfileId] = useState<ProfileId>('sun3ss');
   const [transitionEffect, setTransitionEffect] = useState<TransitionEffect>('none');
   const [soundEnabled, setSoundEnabled] = useState(true);
@@ -314,7 +319,7 @@ export default function App() {
         {/* Rute Halaman Utama */}
         <Route path="/" element={<MainHomePage />} />
         
-        {/* Rute Halaman Direktori Order Web (Memanggil komponen OrderWeb dari Orderweb.tsx) */}
+        {/* Rute Halaman Direktori Order Web */}
         <Route path="/order-web" element={<OrderWeb />} />
       </Routes>
     </BrowserRouter>
