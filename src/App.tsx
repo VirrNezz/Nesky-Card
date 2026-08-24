@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
   Sparkles,
   RefreshCw,
@@ -11,64 +11,12 @@ import {
   X,
   Terminal,
   Zap,
-  ArrowLeft,
 } from 'lucide-react';
 import { PROFILES } from './data/profiles';
 import { ProfileId, TransitionEffect } from './types';
 import { ProgrammerCard } from './components/ProgrammerCard';
 import { PNGTuberWidget } from './components/PNGTuberWidget';
-
-// ==========================================
-// HALAMAN DIREKTORI KHUSUS: /order-web
-// ==========================================
-function OrderWebPage() {
-  const navigate = useNavigate();
-
-  return (
-    <div className="min-h-screen bg-[#090d14] text-slate-100 p-6 flex flex-col items-center justify-center font-space">
-      <div className="max-w-md w-full bg-[#0d1117] border border-cyan-500/40 rounded-2xl p-6 shadow-[0_0_30px_rgba(6,182,212,0.2)]">
-        
-        {/* Tombol Kembali ke Beranda */}
-        <button 
-          onClick={() => navigate('/')} 
-          className="inline-flex items-center gap-1.5 text-xs font-mono-code text-cyan-400 hover:text-cyan-300 mb-6 transition-colors cursor-pointer"
-        >
-          <ArrowLeft size={14} />
-          <span>BACK_TO_MAIN_HUD</span>
-        </button>
-
-        <div className="flex items-center gap-2 mb-4">
-          <Terminal size={20} className="text-cyan-400" />
-          <h1 className="text-xl font-bold tracking-tight text-cyan-200">
-            ORDER_WEB_PORTAL
-          </h1>
-        </div>
-
-        <p className="text-xs text-slate-400 mb-6 leading-relaxed">
-          Halaman direktori khusus untuk pemesanan website atau komisi digital dari card Sun3ss / Alonysky!
-        </p>
-
-        {/* Contoh info & aksi */}
-        <div className="space-y-3 font-mono-code text-xs">
-          <div className="p-3 rounded-xl bg-black/50 border border-white/10 flex justify-between items-center">
-            <span>Status Komisi:</span>
-            <span className="text-emerald-400 font-bold">OPEN / AVAILABLE</span>
-          </div>
-          <a
-            href="https://discord.gg/RVZSxzjs" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-full py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] cursor-pointer"
-          >
-            <Sparkles size={14} />
-            <span>CONTACT VIA DISCORD</span>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  );
-}
+import { OrderWeb } from './components/Orderweb'; // Memanggil dari file Orderweb.tsx terpisah
 
 // ==========================================
 // HALAMAN UTAMA (DOUBLE CARD HUD)
@@ -341,7 +289,7 @@ function MainHomePage() {
             </button>
             <h3 className="font-space text-lg font-bold mb-3">System Guide</h3>
             <p className="text-xs text-slate-300 mb-4">
-              Gunakan tombol di card untuk berinteraksi, dan akses direktori order web melalui tombol tautan yang disediakan di card Sun3ss!
+              Gunakan tombol di card untuk berinteraksi, dan akses halaman order web melalui tautan yang tersedia!
             </p>
             <button
               onClick={() => setShowHelpModal(false)}
@@ -366,8 +314,8 @@ export default function App() {
         {/* Rute Halaman Utama */}
         <Route path="/" element={<MainHomePage />} />
         
-        {/* Rute Halaman Direktori Order Web */}
-        <Route path="/order-web" element={<OrderWebPage />} />
+        {/* Rute Halaman Direktori Order Web (Memanggil komponen OrderWeb dari Orderweb.tsx) */}
+        <Route path="/order-web" element={<OrderWeb />} />
       </Routes>
     </BrowserRouter>
   );
