@@ -23,7 +23,23 @@ export const OrderWeb: React.FC = () => {
         : 'A serene aquatic-themed aesthetic design packed with clean, stylized social media cards.',
       tag: lang === 'id' ? 'Desain Khusus 🚀' : 'Custom Design 🚀',
       link: 'https://capruk-card.vercel.app'
-    }
+    },
+    {
+      title: 'Nesky Card',
+      desc: lang === 'id'
+        ? 'Sebuah Card Sepasang 2 Naga Yang Mesra Dalam Satu Web Dengan Temanya Masing-Masing'
+        : 'A card for a pair of 2 friendly dragons on one website with their own themes',
+      tag: lang === 'id' ? 'paling romantis' : 'most romantic',
+      link: 'https://nesky-card.vercel.app'
+    },
+    {
+      title: 'Furry Society Group Website',
+      desc: lang === 'id'
+        ? 'Sebuah Komunitas Dengan Tema Yang Menarik Yaitu Komunitas Furry Yang Estetik Dan Profesional'
+        : 'A community with an engaging theme: an aesthetic and professional furry community.',
+      tag: lang === 'id' ? 'paling mahal karna banyak fitur' : 'most expensive cause a lot of feature',
+      link: 'https://furry-society-group.my.id'
+    },
   ];
 
   const nextCard = () => {
