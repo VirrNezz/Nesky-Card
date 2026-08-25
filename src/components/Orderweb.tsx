@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Smartphone, Monitor, CheckCircle2, ShoppingBag, Sparkles } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ShoppingBag, Sparkles, Sliders } from 'lucide-react';
 
 export const OrderWeb: React.FC = () => {
   useEffect(() => {
@@ -8,8 +8,8 @@ export const OrderWeb: React.FC = () => {
 
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [lang, setLang] = useState<'id' | 'en'>('id');
-  const [deviceMode, setDeviceMode] = useState<'desktop' | 'android'>('desktop');
 
+  // Data template/contoh showcase web dengan harga flat Rp 150.000 / $10 USD
   const showcaseCards = [
     {
       title: 'Juno Card',
@@ -17,8 +17,6 @@ export const OrderWeb: React.FC = () => {
         ? 'Card Interaktif Dengan Fitur Card Fursona Dan Art Gallery' 
         : 'An interactive showcase featuring dedicated fursona cards and an art gallery layout.',
       tag: lang === 'id' ? 'Paling Disukai' : 'Most Liked',
-      price: lang === 'id' ? 'Mulai dari Rp 75.000' : 'Starts from $5 USD',
-      features: ['Interactive 3D Effect', 'Fursona Profile Hub', 'Art Gallery Section'],
       link: 'https://juno-card.vercel.app'
     },
     {
@@ -27,8 +25,6 @@ export const OrderWeb: React.FC = () => {
         ? 'Desain Tenang bertema Aquatic Dengan Bermacam-Macam Media Sosial Card yang estetik' 
         : 'A serene aquatic-themed aesthetic design packed with clean, stylized social media cards.',
       tag: lang === 'id' ? 'Desain Khusus 🚀' : 'Custom Design 🚀',
-      price: lang === 'id' ? 'Mulai dari Rp 90.000' : 'Starts from $6 USD',
-      features: ['Aquatic Aesthetic Vibe', 'Custom Social Links', 'Fast Loading Speed'],
       link: 'https://capruk-card.vercel.app'
     },
     {
@@ -37,8 +33,6 @@ export const OrderWeb: React.FC = () => {
         ? 'Sebuah Card Sepasang 2 Naga Yang Mesra Dalam Satu Web Dengan Temanya Masing-Masing'
         : 'A card for a pair of friendly dragons on one website with their own custom themes.',
       tag: lang === 'id' ? 'Paling Romantis' : 'Most Romantic',
-      price: lang === 'id' ? 'Mulai dari Rp 120.000' : 'Starts from $8 USD',
-      features: ['Dual-Theme Persona', 'Interactive Dialogue/TTS', 'Romantic Aesthetics'],
       link: 'https://nesky-card.vercel.app'
     },
     {
@@ -47,8 +41,6 @@ export const OrderWeb: React.FC = () => {
         ? 'Sebuah Komunitas Dengan Tema Yang Menarik Yaitu Komunitas Furry Yang Estetik Dan Profesional'
         : 'A community with an engaging theme: an aesthetic and professional furry community.',
       tag: lang === 'id' ? 'Fitur Terlengkap' : 'Most Features',
-      price: lang === 'id' ? 'Mulai dari Rp 250.000' : 'Starts from $15 USD',
-      features: ['Full Community Portal', 'Advanced Multi-Page', 'Custom Domain Support'],
       link: 'https://furry-society-group.my.id'
     },
   ];
@@ -59,7 +51,7 @@ export const OrderWeb: React.FC = () => {
   return (
     <div className="min-h-screen w-full text-slate-100 p-4 sm:p-8 flex flex-col items-center font-space relative overflow-x-hidden">
       
-      {/* ================= ANIMASI BACKGROUND GRADASI PROFESIONAL (BEBAS LAG) ================= */}
+      {/* ================= BACKGROUND GRADASI HALUS (ANTI LAG) ================= */}
       <div className="absolute inset-0 bg-[#060913] -z-20 overflow-hidden">
         <div className="absolute -top-[40%] -left-[20%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tr from-cyan-600/30 to-indigo-600/30 blur-[120px] animate-pulse duration-1000" />
         <div className="absolute top-[30%] -right-[20%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-br from-emerald-600/20 to-cyan-700/20 blur-[140px] animate-pulse duration-1000" />
@@ -100,62 +92,40 @@ export const OrderWeb: React.FC = () => {
           {lang === 'id' ? 'STATUS KOMISI: OPEN (SLOT TERSEDIA)' : 'COMMISSION STATUS: OPEN'}
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-3 drop-shadow-md">
-          {lang === 'id' ? 'Web Development & Design Store 🚀' : 'Web Development & Design Store 🚀'}
+          {lang === 'id' ? 'Custom Website Commission Store 🚀' : 'Custom Website Commission Store 🚀'}
         </h1>
         <p className="text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
           {lang === 'id' 
-            ? 'Pesan website profil, portofolio interaktif, atau hub komunitas impianmu dengan fitur kustom dan dukungan bahasa ID/EN.' 
-            : 'Order your custom profile website, interactive portfolio, or community hub with fully tailored features.'}
+            ? 'Pesan website interaktif impianmu dengan harga flat, bebas request fitur & multi-card sesuai selera!' 
+            : 'Order your dream interactive website with a flat price, free multi-card & custom feature requests!'}
         </p>
       </div>
 
-      {/* ================= MAIN STOREFRONT SHOWCASE (GLASSMORPHISM STYLE) ================= */}
+      {/* ================= MAIN STOREFRONT SHOWCASE (GLASSMORPHISM) ================= */}
       <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12 z-20">
         
-        {/* Left: Glass Preview Panel */}
+        {/* Left: Live Responsive Preview Panel */}
         <div className="lg:col-span-7 flex flex-col">
           <div className="bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[32px] p-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex-1 flex flex-col justify-between">
             
             <div>
               <div className="flex items-center justify-between mb-4">
-                {/* Switcher Desktop / Android */}
-                <div className="flex items-center bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-1 text-[10px] font-mono-code">
-                  <button
-                    onClick={() => setDeviceMode('desktop')}
-                    className={`px-3 py-1 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
-                      deviceMode === 'desktop' ? 'bg-cyan-500 text-slate-950 font-bold shadow' : 'text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    <Monitor size={12} /> Desktop
-                  </button>
-                  <button
-                    onClick={() => setDeviceMode('android')}
-                    className={`px-3 py-1 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
-                      deviceMode === 'android' ? 'bg-cyan-500 text-slate-950 font-bold shadow' : 'text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    <Smartphone size={12} /> Android
-                  </button>
-                </div>
+                <span className="text-xs font-mono-code text-cyan-300 flex items-center gap-1.5 bg-cyan-500/10 px-3 py-1 rounded-xl border border-cyan-500/20">
+                  <Sliders size={13} /> {lang === 'id' ? 'Live Responsive Preview' : 'Live Responsive Preview'}
+                </span>
 
                 <span className="px-3.5 py-1 rounded-full bg-cyan-500/10 backdrop-blur-md border border-cyan-400/20 text-cyan-300 text-xs font-mono-code font-bold">
                   {showcaseCards[currentCardIndex].tag}
                 </span>
               </div>
 
-              {/* Dynamic Preview Frame */}
-              <div className="w-full flex justify-center bg-black/20 backdrop-blur-sm p-3 rounded-2xl border border-white/5 relative">
-                <div 
-                  className={`transition-all duration-500 overflow-hidden bg-black relative shadow-2xl ${
-                    deviceMode === 'android' 
-                      ? 'w-[250px] h-[440px] rounded-[36px] border-[6px] border-slate-800' 
-                      : 'w-full h-52 rounded-2xl border border-white/10'
-                  }`}
-                >
+              {/* Kotak Preview Presisi Otomatis Mengikuti Asli (Full Container) */}
+              <div className="w-full flex justify-center bg-black/20 backdrop-blur-sm p-2 rounded-2xl border border-white/5 relative">
+                <div className="w-full h-64 sm:h-72 rounded-2xl overflow-hidden bg-black relative border border-white/10 shadow-2xl">
                   <iframe 
                     src={showcaseCards[currentCardIndex].link} 
                     title="Live Web Preview"
-                    className="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none border-0"
+                    className="w-full h-full border-0"
                     loading="lazy"
                   />
                 </div>
@@ -184,11 +154,11 @@ export const OrderWeb: React.FC = () => {
           </div>
         </div>
 
-        {/* Right: Glass Details & Pricing Panel */}
+        {/* Right: Flat Price & Universal Features Panel */}
         <div className="lg:col-span-5 flex flex-col justify-between bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[32px] p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
           <div>
             <div className="text-xs font-mono-code text-cyan-400 mb-1 uppercase tracking-wider">
-              {lang === 'id' ? 'Detail Paket Template' : 'Template Package Details'}
+              {lang === 'id' ? 'Paket Universal All-in-One' : 'All-in-One Universal Package'}
             </div>
             <h3 className="text-xl font-bold text-white mb-2">
               {showcaseCards[currentCardIndex].title}
@@ -197,21 +167,32 @@ export const OrderWeb: React.FC = () => {
               {showcaseCards[currentCardIndex].desc}
             </p>
 
-            <div className="text-lg font-extrabold text-emerald-400 font-mono-code mb-5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 px-3.5 py-2 rounded-2xl inline-block shadow-inner">
-              {showcaseCards[currentCardIndex].price}
+            {/* Flat Price Tag */}
+            <div className="text-xl font-extrabold text-emerald-400 font-mono-code mb-5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 px-4 py-2.5 rounded-2xl inline-block shadow-inner">
+              {lang === 'id' ? 'Rp 150.000 / Flat' : '$10 USD / Flat'}
             </div>
 
-            {/* Feature List */}
+            {/* Universal Features List */}
             <div className="space-y-2.5 mb-6">
               <div className="text-[11px] font-mono-code text-slate-400">
-                {lang === 'id' ? 'FITUR UTAMA TERMASUK:' : 'INCLUDED CORE FEATURES:'}
+                {lang === 'id' ? 'FASILITAS & KETENTUAN PAKET:' : 'PACKAGE FEATURES & TERMS:'}
               </div>
-              {showcaseCards[currentCardIndex].features.map((feat, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-xs text-slate-200">
-                  <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
-                  <span>{feat}</span>
-                </div>
-              ))}
+              <div className="flex items-center gap-2 text-xs text-slate-200">
+                <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                <span>{lang === 'id' ? 'Bebas Request Jumlah Multi-Card' : 'Free Multi-Card Request'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-200">
+                <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                <span>{lang === 'id' ? 'Bebas Jumlah Media Sosial' : 'Unlimited Social Media Links'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-200">
+                <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                <span>{lang === 'id' ? 'Maksimal 3 Request Fitur Utama' : 'Up to 3 Custom Main Features'}</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-200">
+                <CheckCircle2 size={14} className="text-cyan-400 shrink-0" />
+                <span>{lang === 'id' ? 'Support Custom Domain (Biaya per Tahun)' : 'Custom Domain Support (Annual Fee)'}</span>
+              </div>
             </div>
           </div>
 
@@ -226,13 +207,13 @@ export const OrderWeb: React.FC = () => {
             </a>
 
             <a
-              href={`https://t.me/Nesinezz?text=Hi%2C%20I%27m%20interested%20in%20ordering%20the%20${encodeURIComponent(showcaseCards[currentCardIndex].title)}%20template!`}
+              href={`https://t.me/Nesinezz?text=Hi%2C%20I%27d%20like%20to%20order%20a%20custom%20website%20commission%20based%20on%20${encodeURIComponent(showcaseCards[currentCardIndex].title)}!`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-mono-code text-xs font-extrabold flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] cursor-pointer"
             >
               <ShoppingBag size={14} />
-              <span>{lang === 'id' ? 'PESAN TEMPLATE INI 🛒' : 'ORDER THIS TEMPLATE 🛒'}</span>
+              <span>{lang === 'id' ? 'PESAN SEKARANG (RP 150K) 🛒' : 'ORDER NOW ($10 USD) 🛒'}</span>
             </a>
           </div>
 
@@ -240,7 +221,7 @@ export const OrderWeb: React.FC = () => {
 
       </div>
 
-      {/* ================= AREA BAWAH: GLASS CARDS INFORMASI ================= */}
+      {/* ================= AREA BAWAH: INFORMASI & KONTAK ================= */}
       <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-3 gap-4 pb-12 z-20">
         
         {/* Contact Telegram */}
@@ -263,7 +244,7 @@ export const OrderWeb: React.FC = () => {
 
         {/* Tanya Tentang Web */}
         <a
-          href="https://t.me/Nesinezz?text=Hi%2C%20I%20have%20a%20few%20questions%20about%20your%20website%20commissions."
+          href="https://t.me/Nesinezz?text=Hi%2C%20I%20have%20questions%20about%20custom%20features%20for%20my%20website%20commission."
           target="_blank"
           rel="noopener noreferrer"
           className="p-5 rounded-[28px] bg-white/[0.03] backdrop-blur-2xl hover:bg-white/[0.06] border border-white/10 shadow-xl transition-all cursor-pointer group flex flex-col justify-between"
@@ -274,7 +255,7 @@ export const OrderWeb: React.FC = () => {
               {lang === 'id' ? 'Tanya Tentang Web' : 'Ask About Web'}
             </h4>
             <p className="text-[10px] text-slate-300 leading-relaxed">
-              {lang === 'id' ? 'Konsultasi gratis & custom fitur sesuai keinginanmu.' : 'Free consultation & custom features tailored to your needs.'}
+              {lang === 'id' ? 'Diskusikan request 3 fitur utama & custom domain secara gratis.' : 'Discuss your 3 main custom features & domain setup for free.'}
             </p>
           </div>
           <span className="text-[10px] font-mono-code text-cyan-400 mt-3 block">Chat Now →</span>
@@ -282,7 +263,7 @@ export const OrderWeb: React.FC = () => {
 
         {/* Mau Beli / Secure Order */}
         <a
-          href="https://t.me/Nesinezz?text=Hi%2C%20I%20would%20like%20to%20order%20a%20website%20commission!"
+          href="https://t.me/Nesinezz?text=Hi%2C%20I%20want%20to%20order%20the%20Rp%20150.000%20website%20commission!"
           target="_blank"
           rel="noopener noreferrer"
           className="p-5 rounded-[28px] bg-white/[0.03] backdrop-blur-2xl hover:bg-white/[0.06] border border-white/10 shadow-xl transition-all cursor-pointer group flex flex-col justify-between"
@@ -293,7 +274,7 @@ export const OrderWeb: React.FC = () => {
               {lang === 'id' ? 'Mau Beli' : 'Want to Buy'}
             </h4>
             <p className="text-[10px] text-slate-300 leading-relaxed">
-              {lang === 'id' ? 'Amankan slot komisi websitemu sekarang juga dengan aman.' : 'Secure your web commission slot safely right now.'}
+              {lang === 'id' ? 'Amankan slot komisi websitemu sekarang seharga Rp 150.000 flat.' : 'Secure your custom web commission slot for a flat Rp 150.000.'}
             </p>
           </div>
           <span className="text-[10px] font-mono-code text-emerald-400 mt-3 block">Book Slot →</span>
