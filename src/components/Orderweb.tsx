@@ -169,7 +169,7 @@ export const OrderWeb: React.FC = () => {
 
             {/* Flat Price Tag */}
             <div className="text-xl font-extrabold text-emerald-400 font-mono-code mb-5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 px-4 py-2.5 rounded-2xl inline-block shadow-inner">
-              {lang === 'id' ? 'Rp 150.000 / Flat' : '$10 USD / Flat'}
+              {lang === 'id' ? 'Rp 150.000 / Website' : '$20 USD / Website'}
             </div>
 
             {/* Universal Features List */}
