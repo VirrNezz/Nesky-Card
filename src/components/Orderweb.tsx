@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, ShoppingBag, Sparkles, Sliders } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ShoppingBag, Smartphone, Monitor, Sliders } from 'lucide-react';
 
 export const OrderWeb: React.FC = () => {
   useEffect(() => {
@@ -8,6 +8,7 @@ export const OrderWeb: React.FC = () => {
 
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [lang, setLang] = useState<'id' | 'en'>('id');
+  const [deviceMode, setDeviceMode] = useState<'desktop' | 'android'>('desktop'); // State khusus pilihan perangkat
 
   // Data template/contoh showcase web dengan harga flat Rp 150.000 / $10 USD
   const showcaseCards = [
@@ -104,28 +105,50 @@ export const OrderWeb: React.FC = () => {
       {/* ================= MAIN STOREFRONT SHOWCASE (GLASSMORPHISM) ================= */}
       <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12 z-20">
         
-        {/* Left: Live Responsive Preview Panel */}
+        {/* Left: Live Preview Panel dengan Switcher Desktop & Android */}
         <div className="lg:col-span-7 flex flex-col">
           <div className="bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[32px] p-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex-1 flex flex-col justify-between">
             
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono-code text-cyan-300 flex items-center gap-1.5 bg-cyan-500/10 px-3 py-1 rounded-xl border border-cyan-500/20">
-                  <Sliders size={13} /> {lang === 'id' ? 'Live Responsive Preview' : 'Live Responsive Preview'}
-                </span>
+                {/* Tombol Pilihan Mode Perangkat Desktop / Android */}
+                <div className="flex items-center bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-1 text-[10px] font-mono-code">
+                  <button
+                    onClick={() => setDeviceMode('desktop')}
+                    className={`px-3 py-1 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                      deviceMode === 'desktop' ? 'bg-cyan-500 text-slate-950 font-bold shadow' : 'text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    <Monitor size={12} /> Desktop
+                  </button>
+                  <button
+                    onClick={() => setDeviceMode('android')}
+                    className={`px-3 py-1 rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                      deviceMode === 'android' ? 'bg-cyan-500 text-slate-950 font-bold shadow' : 'text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    <Smartphone size={12} /> Android
+                  </button>
+                </div>
 
                 <span className="px-3.5 py-1 rounded-full bg-cyan-500/10 backdrop-blur-md border border-cyan-400/20 text-cyan-300 text-xs font-mono-code font-bold">
                   {showcaseCards[currentCardIndex].tag}
                 </span>
               </div>
 
-              {/* Kotak Preview Presisi Otomatis Mengikuti Asli (Full Container) */}
-              <div className="w-full flex justify-center bg-black/20 backdrop-blur-sm p-2 rounded-2xl border border-white/5 relative">
-                <div className="w-full h-64 sm:h-72 rounded-2xl overflow-hidden bg-black relative border border-white/10 shadow-2xl">
+              {/* Bingkai Preview Dinamis (Desktop / Android Frame) */}
+              <div className="w-full flex justify-center bg-black/20 backdrop-blur-sm p-3 rounded-2xl border border-white/5 relative">
+                <div 
+                  className={`transition-all duration-500 overflow-hidden bg-black relative shadow-2xl ${
+                    deviceMode === 'android' 
+                      ? 'w-[250px] h-[420px] rounded-[36px] border-[6px] border-slate-800' 
+                      : 'w-full h-56 rounded-2xl border border-white/10'
+                  }`}
+                >
                   <iframe 
                     src={showcaseCards[currentCardIndex].link} 
                     title="Live Web Preview"
-                    className="w-full h-full border-0"
+                    className="w-[200%] h-[200%] transform scale-50 origin-top-left pointer-events-none border-0"
                     loading="lazy"
                   />
                 </div>
@@ -169,7 +192,7 @@ export const OrderWeb: React.FC = () => {
 
             {/* Flat Price Tag */}
             <div className="text-xl font-extrabold text-emerald-400 font-mono-code mb-5 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 px-4 py-2.5 rounded-2xl inline-block shadow-inner">
-              {lang === 'id' ? 'Rp 150.000 / Website' : '$20 USD / Website'}
+              {lang === 'id' ? 'Rp 150.000 / Flat' : '$10 USD / Flat'}
             </div>
 
             {/* Universal Features List */}
